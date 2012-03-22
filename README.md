@@ -41,3 +41,25 @@ and [installation from source](http://doc.silverstripe.org/sapphire/en/installat
 	GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
 	STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
 	OF SUCH DAMAGE.
+
+## Sample _ss_environment.php file ##
+
+
+	/* What kind of environment is this: development, test, or live (ie, production */
+	define('SS_ENVIRONMENT_TYPE', 'dev');
+
+	$server = (getenv('OPENSHIFT_DB_HOST') !== FALSE) ? $_ENV['OPENSHIFT_DB_HOST'] : "localhost";
+	$username = (getenv("OPENSHIFT_DB_USERNAME") != FALSE) ? $_ENV['OPENSHIFT_DB_USERNAME'] : "root";
+	$password = (getenv("OPENSHIFT_DB_PASSWORD") != FALSE) ? $_ENV['OPENSHIFT_DB_PASSWORD'] : "";
+
+	global $_FILE_TO_URL_MAPPING;
+	#$_FILE_TO_URL_MAPPING['/home/'] = 'http://localhost';
+
+	/* Database connection */
+	define('SS_DATABASE_SERVER', $server);
+	define('SS_DATABASE_USERNAME', $username);
+	define('SS_DATABASE_PASSWORD', $password);
+
+	/* Configure a default username and password to access the CMS on all sites in */
+	define('SS_DEFAULT_ADMIN_USERNAME', 'admin');
+	define('SS_DEFAULT_ADMIN_PASSWORD', 'password1');
