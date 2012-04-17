@@ -1,0 +1,85 @@
+/*Banner Cycle*/
+#cycleMask {
+	width:696px;
+	height:250px;
+	overflow:hidden;
+}
+#cycleMask .slide {
+	/*position:absolute;*/
+	width: 696px;
+	height: 250px;	/*left: 2px;
+	top: 1px;*/
+}
+#scroller_corners_l {z-index: 21; background: url(../images/rounded_corners_scroller_l.png) no-repeat top left; width: 10px; height: 250px; position: absolute;}
+#scroller_corners_r {z-index: 21; background: url(../images/rounded_corners_scroller_r.png) no-repeat top right; width: 10px; height: 250px; position: absolute; top: 0; right: 0;}
+
+/*banner-control classes*/
+#cycleNav {
+	width: 696px;
+	height: 36px;
+	position: absolute;
+	top: 214px;
+	z-index: 20;
+	background: url(../images/cycleNavBack.png) no-repeat top center;
+}
+#cycleMask ul {
+	color: #FFF;
+	font: 12px "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+	line-height: 18px;
+	margin: 0px;
+	list-style: none;
+	height: 208px;
+	float: right;
+	width: 192px;
+	background: url(../images/1px75pctblack.png) repeat top center;
+	padding: 6px 12px 0 15px;
+	z-index: 4;
+	overflow: hidden;
+}
+#cycleMask ul li {
+	margin: 9px 0;
+}
+#cycleMask ul li.title {
+	font: 15px "Helvetica Neue Bold", Arial, Helvetica, sans-serif;
+	color: #FFF;
+	font-weight: bold;
+}
+#cycleMask a {color: #f4b208;}
+
+ul#cycle-controls {
+	margin: 1px 9px 0 0;
+	padding: 0px;
+	list-style: none;
+	float: right;
+}
+ul#cycle-controls li {
+	float: right;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	display: inline;
+}
+ul#cycle-controls li a {
+	display: block;
+	border: none;
+}
+ul#cyclepager a.activeSlide {
+	text-decoration: underline;
+}
+ul#cyclepager {
+	padding: 0px;
+	margin: 8px 0px 0px;
+}
+ul#cyclepager li {
+	list-style: none;
+	float: left;
+}
+ul#cyclepager li a {
+	display: block;
+	margin-left: 15px;
+	color: #FFF;
+	font: 11px "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	margin-top: 4px;
+	border: none;
+}
