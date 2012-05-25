@@ -39,47 +39,19 @@
 		
 		<ul>
 			<li class="current">
-				<a href="index.html" data-description="All starts here">Home</a>
-				<ul>
-					<li><a href="logos-slider.html">Logos Slider</a></li>
-					<li><a href="photos-slider.html">Photos Slider</a></li>
-				</ul>
+				<a href="home" data-description="All starts here">Home</a>
 			</li>
 			<li>
-				<a href="elements.html" data-description="All Listings">Listings</a>
-				<ul>
-					<li><a href="about-us.html">About Us</a></li>
-					<li><a href="our-team.html">Our Team</a>
-						<ul>
-							<li><a href="we-are-hiring.html">We are hiring</a></li>
-						</ul>
-					</li>
-					<li><a href="elements.html">Elements</a></li>
-					<li><a href="pricing-tables.html">Pricing Tables</a></li>
-					<li><a href="columns.html">Columns</a></li>
-					<li><a href="#">Third Level Item</a>
-						<ul>
-							<li><a href="#">This is a simple example</a></li>
-							<li><a href="#">Of the third level</a></li>
-							<li><a href="#">Navigation item</a></li> 
-						</ul>
-					</li>
-				</ul>
+				<a href="listings" data-description="Your New Home">For Rent</a>
+				
 			</li>
 			<li>
-				<a href="blog.html" data-description="What we think">Posting Board</a>
-				<ul>
-					<li><a href="single-post.html">Single Post</a></li>
-				</ul>
+				<a href="community" data-description="Posting Board">Community</a>
+				
 			</li>
 			<li>
-				<a href="portfolio-4-columns.html" data-description="Work we are proud of">About Us</a>
-				<ul>
-					<li><a href="portfolio-2-columns.html">2 Columns</a></li>
-					<li><a href="portfolio-3-columns.html">3 Columns</a></li>
-					<li><a href="portfolio-4-columns.html">4 Columns</a></li>
-					<li><a href="single-project.html">Single Project</a></li>
-				</ul>
+				<a href="about" data-description="Work we are proud of">About Us</a>
+				
 			</li>
 			<li>
 				<a href="contact-us.html" data-description="Enquire here">Contact</a>
@@ -91,45 +63,27 @@
 	<a href="index.php"><img src="themes/rentcampus/images/rent-campus-logo.png" alt="Rent Campus Online" ></a>
 	</div>
         
-        <div id="main">
-		                   <article class="slide" style="width:920px">
-		
-			<img src="img/placeholders/slider-slide-1.jpg" width="920" alt="" class="slide-bg-image" />
-			
-			<div class="slide-button">
-				<span class="dropcap">1</span>
-				<h5>Search Listings</h5>
-				<span class="description">From desktop to mobile</span>
-			</div>
-		
-			<div class="slide-content">
-				<h2>Search Listings</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec purus justo.</p>
-				<p><a class="button" href="#">Read More</a></p>
-			</div>
-			
-		</article><!-- end .slide (Responsive Layout) -->
+	<div id="main">
 	
 	<div id="left_col">
     	<div id="mainLeft">
-        
-       	  <div id="leftContent">
-        
-        	
-            
-<div class="clear"></div>
                 	
             	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
-                <div id="page-content">
-                
-                    
+		    <div class="page-content">
+		    	<h2 style="text-transform:uppercase;">$Title</h2>
+				$Content
+				<form action="http://emelleme.createsend.com/t/r/s/ydujlyt/" method="post" id="subForm">
+				<div>
+				<label for="name">Name:</label><br /><input type="text" name="cm-name" id="name" /><br />
+				<label for="ydujlyt-ydujlyt">Email:</label><br /><input type="text" name="cm-ydujlyt-ydujlyt" id="ydujlyt-ydujlyt" /><br />
+				<label for="Phone">Phone:</label><br /><input type="text" name="cm-f-fkihyh" id="Phone" /><br />
 
-                   $Form
-            </div>
+				<input type="submit" value="Subscribe" />
+				</div>
+				</form>
+		    </div>
                 
                 <!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
-            
-          </div>
             
         </div>
         
@@ -137,7 +91,7 @@
     
     </div>
 <div id="right_col">
-	<div id="map">
+	<div class="page-content">
 	
 
 <img src="themes/rentcampus/images/staytuned.jpg" width="162" height="30" /><br />

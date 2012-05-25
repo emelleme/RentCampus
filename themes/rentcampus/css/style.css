@@ -8,7 +8,7 @@ Author URI: http://www.hyalinecreative.com
 Tags: cork, pins, CAB, drexel
 */
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,font,img,ins,kbd,q,s,samp,small,sub,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;text-align:left;font-family:inherit;}table{border-collapse:collapse;border-spacing:0;}ol,ul{list-style:none;}q:before,q:after,blockquote:before,blockquote:after{content:"";}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,font,img,ins,kbd,q,s,samp,small,sub,tt,var,dd,dl,dt,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;text-align:left;font-family:inherit;}table{border-collapse:collapse;border-spacing:0;}ol,ul{list-style:none;}q:before,q:after,blockquote:before,blockquote:after{content:"";}
 
 body {background: #d9a71e; font: 13px/18px "Trebuchet MS", Helvetica, Arial, sans-serif;}
 
@@ -47,8 +47,7 @@ h6 {font: 9px/12px "Trebuchet MS", Helvetica, Arial, sans-serif; }
 	/*	Main Navigation
 	/* -------------------------------------------------- */
 
-	#main-nav { float: left;margin:50px 10px 0px 10px;background: white;
-background-color: rgba(255, 255, 255, 0.8);
+	#main-nav { float: left;margin:50px 10px 0px 10px;
  }
 
 		#main-nav > ul { margin: -6px 0 0; }
@@ -59,6 +58,8 @@ background-color: rgba(255, 255, 255, 0.8);
 				margin: 0;
 				position: relative;
 				width: 188px;
+				height: 100px;
+				background: url(../images/postit1.png) no-repeat;
 				border-bottom: 1px solid transparent;border-bottom-color: #DA3A45;
 			}
 
@@ -71,7 +72,7 @@ background-color: rgba(255, 255, 255, 0.8);
 					font-weight: 800;
 					display: block;
 					letter-spacing: -0.08px;
-					padding: 26px 20px 40px;
+					padding: 32px 20px 40px;
 					position: relative;
 					text-align: center;
 					text-transform: uppercase;
@@ -94,12 +95,10 @@ background-color: rgba(255, 255, 255, 0.8);
 				}
 
 					#main-nav a:hover, #main-nav .hover > a, #main-nav .current > a {
-						border-bottom-color: #DA3A45;
-						border-top-color: #DA3A45;
 						color: #DA3A45;
 					}
 
-					#main-nav a:hover, #main-nav .hover > a, #main-nav .current > a { background: #fff;background-color:rgba(255,255,255,0.7); }
+					#main-nav a:hover, #main-nav .hover > a, #main-nav .current > a { background: url(../images/postit1-tack.png) no-repeat; }
 
 					.not-ie #main-nav .current:after {
 						background: #DA3A45;
@@ -213,17 +212,46 @@ border-top-style: solid;
 border-top-color: initial;
 opacity: 0.8;}
 
-#main {margin: 0px 10px; padding: 0 10px; background: #fff;background-color:rgba(255,255,255,0.8);}
-
+#main {
+position: relative;
+width: 920px;
+margin: 0px 10px; padding: 0 10px; background: #fff;background-color:rgba(255,255,255,0.8);}
+.slide{
+zoom: 1;
+position: relative;
+width: 920px;
+height: 360px;
+margin: 0 auto;
+z-index: 100;
+background-image: url(../images/bg.png)
+}
 #mainLeft{
 	margin: 0px 10px 10px 10px;
 }
-#left_col {width: 690px; float: left; margin: 6px 0;}
+#left_col {width: 670px;float: left;margin: 6px 10px;}
 
-#right_col {width: 230px; float: left; margin: 6px 0;}
+.page-content{
+margin-bottom: 10px;
+ min-height: 100px;
+    padding: 10px;
+background: 
+white url(../images/innergrad.png) top center repeat-x;
+border: 1px solid #DEDEDE;
+}
+
+#right_col h3{
+	color:#DA3A45;
+	font-family: 'Black Ops One','Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	display: block;
+	letter-spacing: -0.08px;
+}
+
+#right_col {width: 210px; float: left; margin: 6px 0;}
 
 
-#footer_wrapper {height: 160px; background: #ddd repeat-x top left;}
+#footer_wrapper {height: 160px; background: #ddd repeat-x top left;background: url(../images/footer_back.gif) repeat-x top left;}
 
 #footer {width: 940px; margin: 0 auto; color: #333;}
 
@@ -303,7 +331,7 @@ height: 87px;
 position: absolute;
 top: 5px;
 left: 294px;
-z-index: 10;
+z-index: 100;
 }
 #pin_left {width: 66px; height: 52px; left:470px; top:60px; position: absolute; background: url(img/pin_left.png) no-repeat; z-index: 10;}
 #pin_right {width: 66px; height: 52px; position: absolute; background: url(img/pin_right.png) no-repeat; right: 0; z-index: 10;}
