@@ -38,24 +38,7 @@
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			<% include Navigation %>
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -73,12 +56,12 @@
 		    	<h2 style="text-transform:uppercase;">$Title</h2>
 				<p style="text-align: left;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Have a question, comment, concern? Want to talk to a person rather than browse online? You can stop by our office or just give us a call, text, or email and we'll answer all your questions and find the perfect apartment or house for you.&nbsp;</span></p>
 				<h3 style="color: #b5272d; font-weight: bold; font-size: 20px; margin: 0px 0px 5px; padding: 0px; font-family: Arial, Helvetica, sans-serif;">Rent Campus Online Main Office</h3>
-				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">1414 W Oxford St, Philadelphia, PA 19121 <a href="http://g.co/maps/qgmqc">Directions</a></span></p>
-				<p><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><strong style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Phone:</strong><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">&nbsp;215.825.3344</span><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><strong style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Fax:</strong><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">&nbsp;215.825.8486</span><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">&nbsp;<a href="mailto:info@rentcampusonline.com">Email</a></span><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /></p>
+				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">1414 W Oxford St, Philadelphia, PA 19121<br/><a href="http://g.co/maps/qgmqc">Click Here for Directions</a></span></p>
+				<p><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><strong style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Phone:</strong><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">&nbsp;215.825.3344</span><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><strong style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Fax:</strong><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">&nbsp;215.825.8486</span><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"><br/><a href="mailto:info@rentcampusonline.com">Email Us Today</a></span><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /><br style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;" /></p>
 				<h2 style="color: #333333; font-weight: bold; font-size: 18px; margin: 0px 0px 5px; padding: 0px; font-family: Arial, Helvetica, sans-serif;">Have a Question or Comment?</h2>
 				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Please feel free to drop us a quick note in the form below. A Rent Campus Online associate will return your message as soon as possible. All fields are required.</span></p>
 				<form action="/contact.php" method="post">  
-                <table width="500" border="0" cellspacing="0" cellpadding="3">
+                <table width="500" border="0" cellspacing="4" cellpadding="3">
                   <tr>
                     <td width="114">Full Name:</td>
                     <td width="386"><input type="text" name="fullname" id="fullname" style="width:300px" value="" /></td>
@@ -99,9 +82,8 @@
                     <td>City/State/ZIP:</td>
                     <td>
                       <input type="text" name="city" id="city" value="" />
-                      <select name="state">
-									    <option value="" selected="selected"> </option>
-                                        <option value="AL">AL</option>
+                      <select name="state" style="width:50px;">
+                                        <option value="AL" selected="selected">AL</option>
                                         <option value="AK">AK</option>
                                         <option value="AZ">AZ</option>
                                         <option value="AR">AR</option>
@@ -172,7 +154,7 @@
                     <td>Verification Code:</td>
                     <td><table border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                          <td style="padding-right: 3px;"><label for="verificationcode"><img src="captcha.php?X92iS" width="120" height="50" /></label></td>
+                          <td style="padding-right: 3px;"><label for="verificationcode"><img src="#" width="120" height="50" /></label></td>
                           <td width="100%">
                             <input name="verificationcode" type="text" class="bodyCopy" id="verificationcode" style="width: 120px; height: 40px; text-align: center; text-transform:lowercase; font-family:Arial, Helvetica, sans-serif; font-weight: bold; font-size: 24px; padding-top: 10px;" maxlength="5" />
                           </td>
@@ -195,17 +177,9 @@
     
     </div>
 <div id="right_col">
-	<div class="page-content">
-<img src="themes/rentcampus/images/staytuned.jpg" width="162" height="30" /><br />
-    <p>We'll be rolling out lots of new deals, events and services soon. So put an end to the endless searching. </p>
-<h3>Mobile Alerts</h3>
-<br/>
-<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
-<br/>
-	<% include Subscribe %>
-	</div>
+	<% include Sidebar %>
 </div>
-    <div class="clear"></div>
+<div class="clear"></div>
 
 </div>
 

@@ -2,25 +2,22 @@
 class Community extends Page {
 
 	public static $db = array(
-		'VideoLink' => 'Varchar'
+		/*'Category' => 'Varchar',
+		'Title' => 'Varchar',
+		'Date' => 'Varchar',
+		'Listing' => 'Varchar',
+		'Author' => 'Varchar',*/
 	);
 	
 	public static $has_one = array(
-		'VideoThumbnail' => 'Image',
-		'Unit' => 'Unit'
 	);
 
 	public static $many_many = array(
-		'ListingImages' => 'Image'
+		
 	);
 	
 	public function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->addFieldToTab("Root.Content.Images", new MultipleFileAttachmentField('ListingImages','Listing Images'));
-		$fields->addFieldToTab("Root.Content.Video", new HeaderField('VideoHeader','Listing Video'));
-		$fields->addFieldToTab("Root.Content.Video", new TextField('VideoLink','Video Link'));
-		$fields->addFieldToTab("Root.Content.Video", new FileAttachmentField('VideoThumbnail','Upload a thumbnail for the video'));
-		return $fields;
+		
 	}
 
 }

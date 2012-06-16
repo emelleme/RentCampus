@@ -11,8 +11,8 @@ Director::set_environment_type("dev");
 
 $dbname = "SS_rentcampus";
 $server = "localhost";
-$username = "";
-$password = "";
+$username = "root";
+$password = "d3v-Emelle";
 
 //global $database;
 //$database = $dbname;

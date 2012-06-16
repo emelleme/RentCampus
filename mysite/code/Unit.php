@@ -1,25 +1,29 @@
 <?php
 
-class Unit extends DataObjectAsPage{
+class Unit extends DataObject{
 
 	public static $db = array(
+		"Title" => "Varchar(100)",
+		"Description" => "Text",
 		"Address" => "Varchar(100)",
 		"UnitNumber" => "Varchar",
 		"ZipCode" => "Varchar",
 		"UnitSize" => "Int",
 		"PropertyType" => "Enum('Apartment,Condo,Single Family Home,Duplex')",//Make this enum
 		"UnitCount" => "Int",//Number of Units at address
-		#"Neighborhood" => "Varchar(70)",
+		"Neighborhood" => "Varchar(70)",
 		"Bathrooms" => "Varchar",
 		"MoveInDate" => "Date",
 		"Summary" => "Text",
 		"Rented" => "Boolean",
 		"UnitStatus" => "Enum('Active,Inactive')",
+		"Signage" => "Boolean",
 		"Price" => "Decimal",
 		"PricePerBedroom" => "Decimal",
 		"SecurityDeposit" => "Decimal",
 		"FirstMonthRent" => "Decimal",
 		"LastMonthRent" => "Decimal",
+		"MinimumRentalTerm" => "Varchar",
 		"PricingNote" => "Text" //Back-end note about unit price
 	);
 	
@@ -29,21 +33,30 @@ class Unit extends DataObjectAsPage{
 		'PricePerBedroom' => '0.00',
 		'SecurityDeposit' => '0.00',
 		'FirstMonthRent' => '0.00',
-		'LastMonthRent' => '0.00'
+		'LastMonthRent' => '0.00',
+		'UnitStatus' => 'Active'
 	);
+	
+	function canEdit($member = null){
+		if(permission::check('ADMIN')){
+		    return true;
+		}else{
+		    return false;
+		}
+	}
 
 	public static $has_one = array(
 		"LeaseDoc" => "File",
 		"GuaranteeofLease" => "File"
 	);
 
-	public static $has_many = array(
-		"Photos" => "Image"
+	public static $many_many = array(
+		'ListingImages' => 'Image'
 	);
 	
 	static $summary_fields = array(
-		'Rented' => 'Rented',
-		'UnitStatus' => 'UnitStatus'
+		'Title' => 'Title',
+		'UnitStatus' => 'Unit Status'
 	);
 	
 	//The class of the page which will list this DataObject
@@ -55,15 +68,19 @@ class Unit extends DataObjectAsPage{
     public function getCMSFields() {
 		$f = parent::getCMSFields();
 		$f->renameField('Content','Full Description');
+		$f->removeFieldFromTab('Root.Main','Neighborhood');
 		$f->addFieldToTab('Root.AddressInfo', new TextField('Address', 'Address'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('UnitNumber', 'Unit Number'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('ZipCode', 'ZipCode'));
  		
- 		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitSize', 'Unit Size (e.g. 650)'));
+ 		$f->addFieldToTab("Root.ListingImages", new MultipleFileAttachmentField('ListingImages','Listing Images'));
+ 		
+ 		$f->addFieldToTab('Root.UnitInfo', new TextField('Bedrooms','Number of Bedrooms'));
+ 		$f->addFieldToTab('Root.UnitInfo', new TextField('Bathrooms','Number of Bathrooms'));
+ 		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitSize', 'Square Feet (e.g. 650)'));
  		$f->addFieldToTab('Root.UnitInfo', new DropDownField('PropertyType','PropertyType',singleton('Unit')->dbObject('PropertyType')->enumValues()));
  		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitCount', 'Number of Units Available'));
- 		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitStatus'));
- 		$f->addFieldToTab('Root.UnitInfo', new TextField('Bathrooms','Number of Bathrooms'));
+ 		$f->addFieldToTab('Root.UnitInfo', new TextField('MinimumRentalTerm', 'Minimum Rental Term'));
  		
  		$f->addFieldToTab('Root.Pricing', new TextField('Price','Price'));
  		$f->addFieldToTab('Root.Pricing', new TextField('PricePerBedroom'));
@@ -76,9 +93,8 @@ class Unit extends DataObjectAsPage{
  		$f->addFieldToTab('Root.Main', new TextAreaField('Summary','Summary'),'Content');
  		$f->addFieldToTab('Root.Main', $date,'Content');
  		
- 		$f->addFieldToTab('Root.Files', new FileIframeField('LeaseDoc','Lease Document'));
- 		$f->addFieldToTab('Root.Files', new FileIframeField('GuaranteeofLease','Guarantee of Lease Document'));
- 		
+ 		$f->addFieldToTab('Root.Files', new FileAttachmentField('LeaseDoc','Lease Document'));
+ 		$f->addFieldToTab('Root.Files', new FileAttachmentField('GuaranteeofLease','Guarantee of Lease Document'));
  		
 		return $f;
 	}

@@ -43,24 +43,7 @@
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			<% include Navigation %>
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -86,6 +69,7 @@
 
 					<div class="header">
 					<div class="one-third">
+					<!--<img src="$CroppedImage(270,100).Url"/>-->
 					<img src="$ListingImages.First.Url" height="180" width="180" />
 					</div>
 						<h2 class="title"> <a href="$Link">$Title</a> </h2>
@@ -104,7 +88,7 @@
 				
 				</div><!-- end .column -->
 				<% end_control %>
-				</section>
+
 				$Form
 		    </div>
                 
@@ -115,24 +99,12 @@
        
     
     </div>
-    <div id="right_col">
+<div id="right_col">
+	<% include Sidebar %>
+	<!--<div class="page-content">
 	
-	<div class="page-content">
-	
-		<h3>My RentCampus</h3>
-		<hr class="dotted" />
-		<ul class="star dotted">
-		<li><a href="">My Favorites</a></li>
-		</ul>
-		
-		<ul class="plus dotted">
-		<li><a href="">Roommate Finder</a></li>
-		</ul>
-		
-		<ul class="arrow-2 dotted">
-		<li><a href="">Facebook Connect</a></li>
-		</ul>
-	</div>
+		<img src="http://maps.googleapis.com/maps/api/staticmap?center=39.981192,-75.14611550000001&zoom=16&size=200x200&maptype=roadmap&markers=icon:http://phillypolice.com/assets/icons/map/homemarker.png|(39.981192,%20-75.14611550000001)&sensor=true" height="180" width="180" />
+	</div>-->
 	
 	</div>
 
@@ -157,64 +129,7 @@
     <!-- /footer wrapper -->
     
     <div id="footer_wrapper">
-    
-    <div id="footer">
-    
-    <div class="padding">
-    
-    <ul class="one">
-    <li class="header">Listings</li>
-    <li><a href="/events">Latest Listings</a></li>
-    <li><a href="/events/tickets">All Listings</a></li>
-    <li><a href="/events/past">Search Listings</a></li>
-	
-    </ul>
-    
-    <ul class="two">
-    <li class="header">About</a></li>
-    <li><a href="/about">About Us</a></li>
-    <li><a href="/about/members">Privacy Policy</a></li>
-    <li><a href="/about/join">Terms of Service</a></li>
-    </ul>
-    
-    <ul class="three">
-    <li class="header">Contact</li>
-    <li><a href="/contact">Contact Us</a></li>
-    <li><a href="/contact/co-sponsorship/">Landlord Portal</a></li>
-    <li>&nbsp;</li>
-    
-    </ul>
-    
-    <ul class="four">
-    	<li class="header">Posting Board</li>
-		<li><a href="#" target="_blank">For Sale</a></li>
-	 	<li><a href="#" target="_blank">Services</a></li>
-	 	<li><a href="#" target="_blank">Jobs</a></li>
-    </ul>
-    
-    <ul class="five">
-    <li class="header">Main Office</li>
-    <li>1414 W Oxford St. <br/>
-		Philadelphia,Pa 19121<br />
-	</li>
-	<li class="header">Phone</li>
-    <li>215.895.2575</li>
-    <li>&nbsp;</li>
-    </ul>
-    
-    <div class="links">
-    <a href="http://www.youtube.com/rentcampus" target="_blank"><img src="themes/rentcampus/images/youTube.png" width="54" height="54" border="0" /></a>
-	<a href="http://www.facebook.com/pages/RentCampus/115296141847785" target="_blank"><img src="themes/rentcampus/images/facebook.png" width="54" height="54" border="0" /></a>
-    </div>
-
-<div class="links">
-    <a href="http://picasaweb.google.com/RentCampus" target="_blank"><img src="themes/rentcampus/images/picasa.png" width="54" height="54" border="0" /></a>
-	<a href="http://rentcampusonline.blogspot.com/" target="_blank"><img src="themes/rentcampus/images/blogger.png" alt="" width="54" height="54" border="0" /></a>
-    </div>
-    
-    
-    </div>
-    <!-- /footer -->
+    <% include Footer %>
     
 </div>
 <!-- /wrapper -->

@@ -1,9 +1,9 @@
 <?php
 
-	class ListingAdmin extends DataObjectAsPageAdmin {
+	class ListingAdmin extends ModelAdmin {
     
     public static $managed_models = array(
-        'Unit'
+        'Unit','UnitFeature'
     );
  
     static $url_segment = 'units';

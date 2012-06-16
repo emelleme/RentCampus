@@ -38,24 +38,7 @@
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			<% include Navigation %>
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -83,15 +66,7 @@
     
     </div>
 <div id="right_col">
-	<div class="page-content">
-<img src="themes/rentcampus/images/staytuned.jpg" width="162" height="30" /><br />
-    <p>We'll be rolling out lots of new deals, events and services soon. So put an end to the endless searching. </p>
-<h3>Mobile Alerts</h3>
-<br/>
-<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
-<br/>
-	<% include Subscribe %>
-	</div>
+	<% include Sidebar %>
 </div>
     <div class="clear"></div>
 

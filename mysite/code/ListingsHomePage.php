@@ -34,6 +34,8 @@ class ListingsHomePage_Controller extends Page_Controller {
 	}
 	
 	public function show($arguments) {
+		$id = Director::URLParam('ID');
 		
+		var_dump();
 	}
 }

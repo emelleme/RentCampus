@@ -24,6 +24,7 @@
 	<script type="text/javascript">
 		function initialize() {
 		  var myOptions = {
+			scrollwheel: false,
 			zoom: 14,
 			center: new google.maps.LatLng(39.980223, -75.157581),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -79,24 +80,7 @@ window.onload = loadScript;
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			<% include Navigation %>
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -130,11 +114,10 @@ window.onload = loadScript;
 						<small>1 bedroom / 1 bathroom</small>
 						 </h3>
 					</div><!-- end .header -->
-
+					<!--<br clear="all" />-->
 					
-
 					<div class="footer">
-						<a class="button" href="$Link"> More Info </a>
+						<a class="button" href="$Link"> More Info </a> <a class="button" href="$Link"> Rent Now </a>
 					</div><!-- end .footer -->
 				
 				</div><!-- end .column -->

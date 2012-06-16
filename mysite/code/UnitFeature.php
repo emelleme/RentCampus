@@ -18,8 +18,8 @@ class UnitFeature extends DataObject {
 	public function getCMSFields()
 	{
 	    return new FieldSet(
-			new TextField('Name', 'Feature Name'),
-			new TextAreaField('Description', 'Description')
+			new TextField('name', 'Feature Name'),
+			new TextAreaField('description', 'Description')
 		);
 	}
 

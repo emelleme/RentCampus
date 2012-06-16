@@ -39,7 +39,9 @@
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
+			<% include Navigation %>
+			
+			<!--<li class="current">
 				<a href="home" data-description="All starts here">Home</a>
 			</li>
 			<li>
@@ -56,7 +58,7 @@
 			</li>
 			<li>
 				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			</li>-->
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -76,34 +78,34 @@
 				<div class="column featured">
 
 					<div class="header">
-						<h2 class="title"> $Title </h2>
-						<h3 class="price"><span> $725 </span> <br />
+						<h3 class="title"> $Title </h3>
+						<h3 class="price">1 bedroom<br /> <span> $725 </span> <br />
 						 </h3>
 						<h5 class="description"> $Content </h5>
 					</div><!-- end .header -->
 
-					<ul class="features">
-						
-						Price: $725.00<br/>
+					<p class="features">
+						<strong>Property Type</strong>: Apartment<br/>
 						1 bedroom / 1 bathroom
-						<hr class="dotted" />
-						<lh>Features</lh>
-						<li data-tooltip="lorem ipsum"> Central Air </li> 
-						<li data-tooltip="lorem ipsum"> Washer and Dryer </li>
-						<li data-tooltip="lorem ipsum"> Swimming Pool </li>   
-
-					</ul><!-- end .features -->
+					</p><!-- end .features -->
 
 					<div class="footer">
-						<a class="button" href="#"> RENT NOW </a>
-						<a class="button" href="#"> BOOK VIEWING </a>
+						
+						<p class="info"><a class="button medium" href="#" style="margin-top:5px;"> BOOK VIEWING </a><br />
+						Note: Appointments are scheduled for 30 minutes with 24 hour advance notice.</br>
+						<strong>Monday</strong>: 11:00 am - 5:00 pm<br />
+						<strong>Tuesday</strong>: 11:00 am - 5:00 pm<br />
+						<strong>Wednesday</strong>: 11:00 am - 5:00 pm<br />
+						<strong>Thursday</strong>: 11:00 am - 5:00 pm<br />
+						<strong>Friday</strong>: 11:00 am - 5:00 pm<br />
+						<strong>Saturday</strong>: 1:00 pm - 4:00 pm</p>
 					</div><!-- end .footer -->
 				
 				</div><!-- end .column -->
 				<aside id="sidebar">
 
 				<% control ListingImages %>
-				<a href="$Link" class="image-gallery" title="$Parent.Parent.Title" rel="group-one"> <img src="$Url" height="100" width="270" /> </a>
+				<a href="$Link" class="image-gallery" title="$Parent.Parent.Title" rel="group-one"><img src="$CroppedImage(270,100).Url"/></a>
 				<% end_control %>
 				</aside>
 			</section><!-- end .simple-pricing-table -->
@@ -121,11 +123,44 @@
     
     <div class="page-content">
 	
-		<h3>My RentCampus</h3>
-		<hr class="dotted" />
-		<ul class="plus dotted">
-		<li><a href="">Add to Favorites</a></li>
-		</ul>
+		<p style="text-align: center;"><a class="button large" href="#"> RENT IT NOW! </a></p>
+		<span class="acc-trigger">
+			<h4><a href="#">Property Details</a></h4>
+		</span>
+
+		<div class="acc-container">
+			<div class="content">
+			<p><strong>Unit #</strong>:$UnitNumber<br/>
+			<strong>Square Feet</strong>:$UnitSize<br/>
+			<strong>Bedrooms</strong>:$Bedrooms<br/>
+			<strong>Bathrooms</strong>:$Bathrooms<br/>
+			<strong>Rental Term</strong>:$MinimumRentalTerm<br/>
+			<strong>Status</strong>: Available<br/></p>
+			</div>
+		</div><!-- end .acc-container -->
+		
+		<span class="acc-trigger">
+			<h4><a href="#">Amenities</a></h4>
+		</span>
+
+		<div class="acc-container">
+			<div class="content">
+			<ul class="arrow dotted">
+			<li>Amenity 1</li>
+			</ul>
+		</div>
+		</div><!-- end .acc-container -->
+
+		<span class="acc-trigger">
+			<a href="#">Utilities</a>
+		</span>
+
+		<div class="acc-container">
+			<div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl orci, condimentum ultrices consequat eu.</div>
+		</div><!-- end .acc-container -->
+
+		
+
 		
 		<ul class="star dotted">
 		<li><a href="">Share with Friends</a></li>

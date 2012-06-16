@@ -38,24 +38,7 @@
 	<nav id="main-nav">
 		
 		<ul>
-			<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>
+			<% include Navigation %>
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -72,6 +55,15 @@
 		    <div class="page-content">
 		    	<h2>$Title</h2>	
 				$Content
+				<h2 style="color: #333333; font-weight: bold; line-height: 1.4; font-size: 18px; margin: 0px 0px 10px; padding: 0px; font-family: Arial, Helvetica, sans-serif;">RentCampus Online was started by serious guys -- independent, Temple University experts who spend their days around Temple searching for the apartments, services and deals you want.</h2>
+				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">They're experienced in Temple off-campus housing and have worked with hundreds of students, parents and landlords for years. And they like what they do.&nbsp;</span></p>
+				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"><br /></span></p>
+				<h3 style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; margin: 0px 0px 10px; color: #b5272d; font-weight: bold; padding: 0px;">Our Agents</h3>
+				<p style="font-size: 14px;"><a href="about/laura-colangelo">Laura Colangelo</a></p>
+				<p style="font-size: 14px;"><a href="about/kim-hildebrandt">Kim Hildebrandt</a></p>
+				<p>&nbsp;</p>
+				<h3 style="color: #b5272d; font-weight: bold; font-size: 20px; margin: 0px 0px 5px; padding: 0px; font-family: Arial, Helvetica, sans-serif;">Need a new place to live?</h3>
+				<p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Drop by the RentCampus Online storefront at 1414 Oxford St anytime, and while you're there, grab a beverage and play some Foosball or Wii.</span></p>
 		    </div>
                 
                 <!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
@@ -82,15 +74,7 @@
     
     </div>
 <div id="right_col">
-	<div class="page-content">
-<img src="themes/rentcampus/images/staytuned.jpg" width="162" height="30" /><br />
-    <p>We'll be rolling out lots of new deals, events and services soon. So put an end to the endless searching. </p>
-<h3>Mobile Alerts</h3>
-<br/>
-<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
-<br/>
-	<% include Subscribe %>
-	</div>
+	<% include Sidebar %>
 </div>
     <div class="clear"></div>
 
