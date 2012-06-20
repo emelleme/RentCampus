@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en" ng-app>
+<html lang="en" class="ng-app" ng-app="">
 <head>
 	<% base_tag %>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="fragment" content="!" />
 	<title>Rent Campus Online </title>
 	<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/blitzer/jquery-ui.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/stylenew.css" />
@@ -11,13 +12,15 @@
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/typography.css" />
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/fancybox.css" />
+	<link rel="stylesheet" type="text/css" href="chosen-lib/chosen.css" />
 	
 	
 
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script src="http://code.angularjs.org/angular-0.10.4.min.js" ng:autobind></script>
+   
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+     <script src="http://code.angularjs.org/angular-1.0.0.min.js" ng:autobind></script>
     <script src="mysite/javascript/respond.min.js"></script>
     <script src="mysite/javascript/jquery.easing-1.3.min.js"></script>
     <script src="mysite/javascript/jquery.fancybox-1.3.4.pack.js"></script>
@@ -26,6 +29,7 @@
 	<script src="mysite/javascript/jquery.cycle.all.min.js"></script>
 	<script src="mysite/javascript/jquery.isotope.min.js"></script>
 	<script src="mysite/javascript/mediaelement-and-player.min.js"></script>
+	<script src="chosen-lib/chosen.jquery.js" type="text/javascript"></script>
 	<script src="mysite/javascript/custom-listings.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Fontdiner+Swanky|Black+Ops+One|Slackey' rel='stylesheet' type='text/css' />
 </head>
@@ -48,7 +52,7 @@
 
 	</nav><!-- end #main-nav -->
     <div id="logo">	
-	<a href="index.php"><img src="themes/rentcampus/images/rent-campus-logo.png" alt="Rent Campus Online" ></a>
+	<a href="home"><img src="themes/rentcampus/images/rent-campus-logo.png" alt="Rent Campus Online" ></a>
 	</div>
         
 	<div id="main">
@@ -57,39 +61,45 @@
     	<div id="mainLeft">
                 	
             	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
-		    <div class="page-content">
-		    	<p class="note">Price Range: <span id="currentValue"><input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="$500 - $1500"  /></span></p>
+		    <div class="page-content" ng-controller="ListingController">
+		    
+		    	<p class="note">Price Range: <span id="currentValue">
+		    	<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;width:160px;"/></span>
+		    	<span>
+		    	Bedrooms:
+		    	<select id="bedrooms" ng-model="bedroom" ng-options="b.count for b in bedrooms" ng-click="bedroomclickAction()" style="width:50px;">
+				</select>
+				</span>
+				<span>
+		    	Bathrooms: 
+		    	<select id="bathrooms" ng-model="bathroom" ng-options="b.count for b in bathrooms" ng-click="bathroomclickAction()" style="width:50px;">
+				</select>
+				</span>
+		    	</p>
 		    	
 				<div id="slider-range" jq:slider></div>
-				<br>
+				<br />
 				<section class="simple-pricing-table col2 clearfix">
+					<header class="page-header"><h1>Listings</h1></header>
 				
-				<% control ChildrenOf(listings) %>
-				<div class="column">
+					<p id="listingNotice" class="{{listingNoticeClass}}">{{listingNoticeMessage}}</p>
+					<div id="listingList">
+						<div class="column" ng-repeat="listing in listings">
 
-					<div class="header">
-					<div class="one-third">
-					<!--<img src="$CroppedImage(270,100).Url"/>-->
-					<img src="$ListingImages.First.Url" height="180" width="180" />
-					</div>
-						<h2 class="title"> <a href="$Link">$Title</a> </h2>
-						<h3 class="price"><span> $725 </span> <br />
-						<small>1 bedroom / 1 bathroom</small>
+						<div class="header">
+						<div class="one-third">
+						<!--<img src="$CroppedImage(270,100).Url"/>-->
+						<img ng-src="{{listing.img}}" height="180" width="180" />
+						</div>
+						<h2 class="title"> <a href="listings/show/{{listing.id}}">{{listing.title}}</a> </h2>
+						<h3 class="price"><span> {{listing.price}} </span> <br />
+						<small>{{listing.bedrooms}} bedroom / {{listing.bathrooms}} bathroom</small>
 						 </h3>
-						<h5 class="description"> $Content.LimitCharacters(200) </h5>
-					</div><!-- end .header -->
+						<p class="description">{{listing.snippet}}</p>
+					</div>
+				</section>
 
-					
-
-					<div class="footer">
-						<a class="button" href="$Link"> More Info </a>
-						<a class="button" href="#"> RENT NOW </a>
-					</div><!-- end .footer -->
 				
-				</div><!-- end .column -->
-				<% end_control %>
-
-				$Form
 		    </div>
                 
                 <!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->

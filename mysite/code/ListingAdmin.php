@@ -3,7 +3,7 @@
 	class ListingAdmin extends ModelAdmin {
     
     public static $managed_models = array(
-        'Unit','UnitFeature'
+        'Unit','Amenity','Utility'
     );
  
     static $url_segment = 'units';

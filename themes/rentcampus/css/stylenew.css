@@ -70,7 +70,7 @@ hr {
 	p + hr { margin: 25px 0 20px; }
 
 #slider-range{
-width: 250px;
+width: 230px;
 }
 blockquote {
 	background: #f8f8f8 url(../img/quote.png) no-repeat 17px 21px;
@@ -400,7 +400,7 @@ label {
 }
 
 input[type='text'],input[type='password'], textarea, select {
-	-webkit-appearance: none; /* Fix for Mobile Safari */
+	/*-webkit-appearance: none;  Fix for Mobile Safari */
 	background-color: #f8f8f8;
 	border: 1px solid #e8e8e8;
 	-webkit-border-radius: 0;
@@ -419,6 +419,13 @@ form input.text, form textarea, form .textajaxuniquetext, form select{
 	height: 30px;
 	width: 200px;
 	font-size: 18px;
+}
+
+form input.righttext{
+	height: 20px;
+	width: 140px;
+	font-size: 15px;
+	margin: 0px 0px 10px 0px;
 }
 
 input[type='checkbox']{
@@ -558,6 +565,8 @@ input.placeholder, textarea.placeholder { color: #b0b0b0; }
 					.not-ie #main-nav .current:after {
 						background: #DA3A45;
 						bottom: -2.5px;
+
+
 						content: '';
 						left: 50%;
 						display: block;
@@ -711,7 +720,7 @@ input.placeholder, textarea.placeholder { color: #b0b0b0; }
 
 			#main .two-third { width: 447px; }
 
-		#main .one-fourth { width: 155px; }
+		#main .one-fourth { width: 185px; }
 
 			#main .three-fourth { width: 505px; }
 
