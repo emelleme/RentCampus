@@ -1,9 +1,26 @@
+<div class="page-content">
+<h3>Mobile Alerts</h3>
+<p>Receive Email or Mobile Alerts</p>
+<hr>
 <form action="http://emelleme.createsend.com/t/r/s/ydujlyt/" method="post" id="subForm">
-	<div>
-		<label for="name">Name:</label><br /><input type="text" name="cm-name" id="name" /><br />
-		<label for="ydujlyt-ydujlyt">Email:</label><br /><input type="text" name="cm-ydujlyt-ydujlyt" id="ydujlyt-ydujlyt" /><br />
-		<label for="Phone">Phone:</label><br /><input type="text" name="cm-f-fkihyh" id="Phone" /><br />
-		<input type="submit" value="Subscribe" />
-		<br/>
+	<fieldset>
+		<div id="NameField" class="field text">
+			<label class="left" for="name">Name</label>
+			<div class="middleColumn"><input type="text" class="righttext" placeholder="Enter your name" name="cm-name" id="name" /></div>
+		</div>
+		<div id="EmailField" class="field text">
+			<label class="left" for="ydujlyt-ydujlyt">Email</label>
+			<div class="middleColumn"><input type="text" class="righttext" placeholder="Enter your email" name="cm-ydujlyt-ydujlyt" id="ydujlyt-ydujlyt" required="required" />
+			</div>
+		</div>
+		<div id="PhoneField" class="field text">
+		<label class="left" for="Phone">Phone</label>
+		<div class="middleColumn"><input type="text" class="righttext" placeholder="Enter your cell #" name="cm-f-fkihyh" id="Phone" /></div>
+		</div>
+	</fieldset>
+	<div class="Actions">
+		<input class="action" type="submit" value="Subscribe" />
 	</div>
+	
 </form>
+</div>

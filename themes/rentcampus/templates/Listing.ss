@@ -79,18 +79,19 @@
 
 					<div class="header">
 						<h3 class="title"> $Title </h3>
-						<h3 class="price">1 bedroom<br /> <span> $725 </span> <br />
+						<h3 class="price">$Bedrooms bedroom<br /> <span> $$Price </span> <br />
 						 </h3>
-						<h5 class="description"> $Content </h5>
+						<h5 class="description"> $Description </h5>
 					</div><!-- end .header -->
 
 					<p class="features">
 						<strong>Property Type</strong>: Apartment<br/>
-						1 bedroom / 1 bathroom
+						$Bedrooms bedroom / $Bathrooms bathroom
 					</p><!-- end .features -->
 
 					<div class="footer">
 						
+						<% if UnitStatus = Active %>
 						<p class="info"><a class="button medium" href="#" style="margin-top:5px;"> BOOK VIEWING </a><br />
 						Note: Appointments are scheduled for 30 minutes with 24 hour advance notice.</br>
 						<strong>Monday</strong>: 11:00 am - 5:00 pm<br />
@@ -98,7 +99,11 @@
 						<strong>Wednesday</strong>: 11:00 am - 5:00 pm<br />
 						<strong>Thursday</strong>: 11:00 am - 5:00 pm<br />
 						<strong>Friday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Saturday</strong>: 1:00 pm - 4:00 pm</p>
+						<strong>Saturday</strong>: 1:00 pm - 4:00 pm
+						</p>
+						<% else %>
+						<p class="error">THIS UNIT IS NO LONGER AVAILABLE.</p>
+						<% end_if %>
 					</div><!-- end .footer -->
 				
 				</div><!-- end .column -->
@@ -122,8 +127,11 @@
     <div id="right_col">
     
     <div class="page-content">
-	
+		<% if UnitStatus = Active %>
 		<p style="text-align: center;"><a class="button large" href="#"> RENT IT NOW! </a></p>
+		<% else %>
+		<p class="error">UNIT HAS BEEN RENTED</p>
+		<% end_if %>
 		<span class="acc-trigger">
 			<h4><a href="#">Property Details</a></h4>
 		</span>
@@ -135,7 +143,7 @@
 			<strong>Bedrooms</strong>:$Bedrooms<br/>
 			<strong>Bathrooms</strong>:$Bathrooms<br/>
 			<strong>Rental Term</strong>:$MinimumRentalTerm<br/>
-			<strong>Status</strong>: Available<br/></p>
+			<strong>Status</strong>: $UnitStatus<br/></p>
 			</div>
 		</div><!-- end .acc-container -->
 		
@@ -145,18 +153,26 @@
 
 		<div class="acc-container">
 			<div class="content">
+			<% control Amenities %>
 			<ul class="arrow dotted">
-			<li>Amenity 1</li>
+			<li>$Name</li>
 			</ul>
-		</div>
+			<% end_control %>
+			</div>
 		</div><!-- end .acc-container -->
 
 		<span class="acc-trigger">
-			<a href="#">Utilities</a>
+			<h5><a href="#">Utilities</a></h5>
 		</span>
 
 		<div class="acc-container">
-			<div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl orci, condimentum ultrices consequat eu.</div>
+			<div class="content">
+			<% control Utilities %>
+			<ul class="arrow dotted">
+			<li>$Name</li>
+			</ul>
+			<% end_control %>
+			</div>
 		</div><!-- end .acc-container -->
 
 		

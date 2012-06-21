@@ -40,4 +40,10 @@ class HomePage_Controller extends Page_Controller {
 		parent::init();
 
 	}
+	
+	public function FeaturedListings()
+	{
+		$d = DataObject::get('Unit','Featured = true');
+		return $d;
+	}
 }

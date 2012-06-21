@@ -55,9 +55,53 @@
 		    <div class="page-content">
 		    	<h2>$Title</h2>	
 				$Content
+				<div id="search">
+					<input type="text" placeholder="keyword" />
+					<input type="submit" value="search" />
+				</div>
+				<br />
+				<button class="button">Post an Ad</button>
+				<hr>
+				<div class="one-fourth">
+				<h4>College/Univeristy</h4>
+				<ul class="arrow dotted">
+					<li><a href="#">books</a></li>
+					<li><a href="#">find a roommate</a></li>
+					<li><a href="#">free stuff</a></li>
+					<li><a href="#">ride share</a></li>
+					<li><a href="#">music</a></li>
+					<li><a href="#">food</a></li>
+					<li><a href="#">events</a></li>
+				</ul>
+				</div>
 				
+				<div class="one-fourth">
+				<h4>Jobs</h4>
+				<ul class="arrow dotted">
+					<li><a href="#">focus group/studies</a></li>
+					<li><a href="#">accounting/finance</a></li>
+					<li><a href="#">computer/technical</a></li>
+					<li><a href="#">education</a></li>
+					<li><a href="#">mgmt/professional</a></li>
+					<li><a href="#">part-time/internship</a></li>
+					<li><a href="#">sales</a></li>
+					<li><a href="#">audition</a></li>
+				</ul>
+				
+				</div>
+				
+				<div class="one-fourth">
+				<h4>Services</h4>
+				<ul class="arrow dotted">
+					<li><a href="#">business</a></li>
+					<li><a href="#">computer</a></li>
+					<li><a href="#">creative</a></li>
+					<li><a href="#">legal</a></li>
+				</ul>
+				</div>
+				<div class="clear"></div>  
 		    </div>
-                
+              
                 <!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
             
         </div>

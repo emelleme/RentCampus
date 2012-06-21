@@ -9,10 +9,10 @@ Director::set_environment_type("dev");
 // Use _ss_environment.php file for configuration include
 //require_once("conf/ConfigureFromEnv.php");
 
-$dbname = "SS_rentcampus";
+$dbname = "SS_rentcampus_dev";
 $server = "localhost";
 $username = "root";
-$password = "d3v-Emelle";
+$password = "d3v-R3ntcampus";
 
 //global $database;
 //$database = $dbname;
@@ -36,7 +36,7 @@ $databaseConfig = array(
 MySQLDatabase::set_connection_charset('utf8');
 // This line set's the current theme. More themes can be
 // downloaded from http://www.silverstripe.org/themes/
-SSViewer::set_theme('blackcandy');
+Director::addRules(50, array('listings/$Action/$ID/$OtherID/$AnotherID' => 'ListingsHomePage_Controller'));
 
 // Set the site locale
 i18n::set_locale('en_US');

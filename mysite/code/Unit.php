@@ -4,6 +4,7 @@ class Unit extends DataObject{
 
 	public static $db = array(
 		"Title" => "Varchar(100)",
+		"Featured" => "Boolean",
 		"Description" => "Text",
 		"Address" => "Varchar(100)",
 		"UnitNumber" => "Varchar",
@@ -12,7 +13,8 @@ class Unit extends DataObject{
 		"PropertyType" => "Enum('Apartment,Condo,Single Family Home,Duplex')",//Make this enum
 		"UnitCount" => "Int",//Number of Units at address
 		"Neighborhood" => "Varchar(70)",
-		"Bathrooms" => "Varchar",
+		"Bedrooms" => "Int",
+		"Bathrooms" => "Int",
 		"MoveInDate" => "Date",
 		"Summary" => "Text",
 		"Rented" => "Boolean",
@@ -51,7 +53,9 @@ class Unit extends DataObject{
 	);
 
 	public static $many_many = array(
-		'ListingImages' => 'Image'
+		'ListingImages' => 'Image',
+		'Amenities' => 'Amenity',
+		'Utilities' => 'Utility'
 	);
 	
 	static $summary_fields = array(
@@ -72,6 +76,36 @@ class Unit extends DataObject{
 		$f->addFieldToTab('Root.AddressInfo', new TextField('Address', 'Address'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('UnitNumber', 'Unit Number'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('ZipCode', 'ZipCode'));
+ 		
+ 		// get all existing features
+        $tags= DataObject::get('Amenity',null);
+        if (!empty($tags)) {
+        	// create an array('ID'=>'Name')
+            $map = $tags->toDropdownMap('ID', 'Name');
+            
+            // create a Checkbox group based on the array
+            $f->addFieldToTab('Root.Amenities',
+                new CheckboxSetField(
+                    $name = "Amenities",
+                    $title = "Select Amenities",
+                    $source = $map
+            ));
+        }
+        
+        // get all existing features
+        $util= DataObject::get('Utility',null);
+        if (!empty($util)) {
+        	// create an array('ID'=>'Name')
+            $map = $util->toDropdownMap('ID', 'Name');
+            
+            // create a Checkbox group based on the array
+            $f->addFieldToTab('Root.Utilities',
+                new CheckboxSetField(
+                    $name = "Utilities",
+                    $title = "Select Utilities",
+                    $source = $map
+            ));
+        }
  		
  		$f->addFieldToTab("Root.ListingImages", new MultipleFileAttachmentField('ListingImages','Listing Images'));
  		

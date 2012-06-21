@@ -23,44 +23,118 @@
     <link href='http://fonts.googleapis.com/css?family=Fontdiner+Swanky|Black+Ops+One|Slackey' rel='stylesheet' type='text/css' />
 	<script type="text/javascript">
 		function initialize() {
-		  var myOptions = {
+		  
+		  
+		  var myMapStyles = [
+			  {
+				featureType: "road.arterial",
+				stylers: [
+				  { lightness: -27 },
+				  { gamma: 2.62 },
+				  { visibility: "on" }
+				]
+			  },{
+				featureType: "road.local",
+				stylers: [
+				  { gamma: 0.7 },
+				  { visibility: "on" },
+				  { hue: "#ff0000" },
+				  { lightness: 12 }
+				]
+			  },{
+				featureType: "landscape.man_made",
+				stylers: [
+				  { visibility: "on" },
+				  { saturation: -1 },
+				  { lightness: 28 }
+				]
+			  },{
+				featureType: "poi.school",
+				stylers: [
+				  { hue: "#ff0900" },
+				  { lightness: -13 },
+				  { saturation: -9 },
+				  { gamma: 0.95 }
+				]
+			  },{
+				featureType: "poi.park",
+				stylers: [
+				  { lightness: -31 }
+				]
+			  },{
+				featureType: "poi.sports_complex",
+				stylers: [
+				  { visibility: "on" },
+				  { gamma: 0.98 },
+				  { lightness: -14 }
+				]
+			  },{
+				featureType: "transit.line",
+				stylers: [
+				  { invert_lightness: true }
+				]
+			  },{
+			  },{
+				featureType: "road.highway",
+				stylers: [
+				  { lightness: -15 },
+				  { gamma: 0.7 }
+				]
+			  },{
+				featureType: "administrative.land_parcel",
+				stylers: [
+				  { lightness: -18 }
+				]
+			  }
+			]
+		
+		var rcMapType = new google.maps.StyledMapType(myMapStyles,
+    	{name: "RentCampus Map"});
+    	
+    	var myOptions = {
 			scrollwheel: false,
 			zoom: 14,
 			center: new google.maps.LatLng(39.980223, -75.157581),
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeControlOptions: {
+			  mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'rc_map']
+			}
 		  }
-		  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-		  var marker1 = new google.maps.Marker({
-			  position: new google.maps.LatLng(39.982329, -75.162053),
-			  map: map,
-			  title:"1900 N 17th St"
-		  });
-		  var marker2 = new google.maps.Marker({
-			  position: new google.maps.LatLng(39.974414, -75.162151),
-			  map: map,
-			  title:"1333 N 16th St"
-		  });
-		  var contentString = '<div id="content" style="width:400px;">'+
-			'<h2 id="firstHeading" class="firstHeading">Property Name</h2>'+
-			'<div id="bodyContent">'+
-			'<p>Marker Content Here</p>'+
-			'<p>Amenities: </p>'+
-			'</div>'+
-			'</div>'
-		  var infowindow = new google.maps.InfoWindow({
-			  content: contentString
-		  });
-		  google.maps.event.addListener(marker1, 'click', function() {
-			  infowindow.open(map,marker1);
-		  });
 		  
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		map.mapTypes.set('rc_map', rcMapType);
+  		map.setMapTypeId('rc_map');
+  		
+		var marker1 = new google.maps.Marker({
+		  position: new google.maps.LatLng(39.982329, -75.162053),
+		  map: map,
+		  title:"1900 N 17th St"
+		});
+		var marker2 = new google.maps.Marker({
+		  position: new google.maps.LatLng(39.974414, -75.162151),
+		  map: map,
+		  title:"1333 N 16th St"
+		});
+		var contentString = '<div id="content" style="width:400px;">'+
+		'<h2 id="firstHeading" class="firstHeading">Property Name</h2>'+
+		'<div id="bodyContent">'+
+		'<p>Marker Content Here</p>'+
+		'<p>Amenities: </p>'+
+		'</div>'+
+		'</div>'
+		var infowindow = new google.maps.InfoWindow({
+		  content: contentString
+		});
+		google.maps.event.addListener(marker1, 'click', function() {
+		  infowindow.open(map,marker1);
+		});
+
 		}
-		
+
 		function loadScript() {
-		  var script = document.createElement("script");
-		  script.type = "text/javascript";
-		  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCgvqlo4BGgoDA0vynL7Zbr8CwfIJjQ57c&sensor=false&callback=initialize";
-		  document.body.appendChild(script);
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCgvqlo4BGgoDA0vynL7Zbr8CwfIJjQ57c&sensor=false&callback=initialize";
+		document.body.appendChild(script);
 		}
 
 window.onload = loadScript;
@@ -99,10 +173,9 @@ window.onload = loadScript;
             	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
 		    <div class="page-content">
 				$Content
-				$Form
 				<section class="simple-pricing-table col2 clearfix">
 				<h3>Featured Listings</h3>
-				<% control ChildrenOf(listings) %>
+				<% control FeaturedListings %>
 				<div class="column">
 
 					<div class="header">
@@ -110,14 +183,14 @@ window.onload = loadScript;
 					<img src="$ListingImages.First.Url" height="100" width="180" />
 					</div>
 						<h2 class="title"> <a href="$Link">$Title</a> </h2>
-						<h3 class="price"><span> $725 </span> <br />
-						<small>1 bedroom / 1 bathroom</small>
+						<h3 class="price"><span> $$Price </span> <br />
+						<small>$Bedrooms bedroom / $Bathrooms bathroom</small>
 						 </h3>
 					</div><!-- end .header -->
 					<!--<br clear="all" />-->
 					
 					<div class="footer">
-						<a class="button" href="$Link"> More Info </a> <a class="button" href="$Link"> Rent Now </a>
+						<a class="button" href="listings/show/$ID"> More Info </a> <a class="button" href="listings/show/$ID"> Rent Now </a>
 					</div><!-- end .footer -->
 				
 				</div><!-- end .column -->
@@ -134,17 +207,20 @@ window.onload = loadScript;
     </div>
 <div id="right_col">
 	<div class="page-content">
-<img src="themes/rentcampus/images/staytuned.jpg" width="162" height="30" /><br />
-    <p>We'll be rolling out lots of new deals, events and services soon. So put an end to the endless searching. </p>
-<h3>Mobile Alerts</h3>
-<br/>
-<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
-<br/>
-	<% include Subscribe %>
+	<h3>Updates</h3>
+    <p>We'll be rolling out lots of new deals, events and services soon. <strong>Stay Tuned!</strong> </p>
+
+	<br/>
+	<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
+	<br/>
+	
 	</div>
+	
+	
+	<% include Subscribe %>
+	
 </div>
     <div class="clear"></div>
-
 </div>
 
 <!-- MAIN CONTENT -->

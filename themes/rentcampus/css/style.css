@@ -239,7 +239,7 @@ white url(../images/innergrad.png) top center repeat-x;
 border: 1px solid #DEDEDE;
 }
 
-#right_col h3{
+.page-content h3{
 	color:#DA3A45;
 	font-family: 'Black Ops One','Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 	font-size: 20px;
