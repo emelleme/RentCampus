@@ -72,7 +72,7 @@
 		    <div class="page-content">
 		    	<h2>$Title</h2>	
 				$Content
-				<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
+				<p><a class="button fb-bg" href="https://www.facebook.com/dialog/oauth?client_id=173057479484090&scope=email,sms,offline_access,publish_stream,user_about_me,user_birthday,publish_actions,friends_about_me,friends_actions:rentcampus&redirect_uri=$BaseHref/signup/go/&response_type=code%20token">Connect with Facebook</a></p>
 				<br />
 				
 				$Form

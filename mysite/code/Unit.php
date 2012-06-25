@@ -26,6 +26,7 @@ class Unit extends DataObject{
 		"FirstMonthRent" => "Decimal",
 		"LastMonthRent" => "Decimal",
 		"MinimumRentalTerm" => "Varchar",
+		"GLatLng" => "Varchar(100)",
 		"PricingNote" => "Text" //Back-end note about unit price
 	);
 	
@@ -55,7 +56,8 @@ class Unit extends DataObject{
 	public static $many_many = array(
 		'ListingImages' => 'Image',
 		'Amenities' => 'Amenity',
-		'Utilities' => 'Utility'
+		'Utilities' => 'Utility',
+		'MemberFavorites' => 'Member'
 	);
 	
 	static $summary_fields = array(
@@ -68,6 +70,25 @@ class Unit extends DataObject{
     //Class Naming (optional but reccomended)
     static $plural_name = 'Units';
     static $singular_name = 'Unit';
+    
+    public function onBeforeWrite(){
+    	if(!$this->record['GLatLng'] || !$this->record['Neighborhood']) {
+    		//Get Latitude and Longitude
+    		$a = new RestfulService('http://maps.googleapis.com/maps/api/geocode/json?address='.$this->record['Address'].'+'.$this->record['ZipCode'].'&sensor=true');
+		$addy = $a->request();
+		if($addy->getStatusCode() == 200){
+			//Status Good. Parse geocode
+			$results = json_decode($addy->getBody());
+			$lat = $results->results[0]->geometry->location->lat;
+			$lng = $results->results[0]->geometry->location->lng;
+			$glatlng = $lat.','.$lng;
+			$n = $results->results[0]->address_components[1]->long_name;
+			$this->record['GLatLng'] = $glatlng;
+			$this->record['Neighborhood'] = $n;
+		}
+	 	}
+ 	parent::onBeforeWrite();
+    }
     
     public function getCMSFields() {
 		$f = parent::getCMSFields();

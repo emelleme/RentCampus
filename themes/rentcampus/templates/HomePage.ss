@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/typography.css" />
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/form.css" />
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="mysite/javascript/respond.min.js"></script>
     <script src="mysite/javascript/jquery.easing-1.3.min.js"></script>
@@ -24,6 +25,25 @@
 	<script type="text/javascript">
 		function initialize() {
 		  
+		var point = new google.maps.LatLng(39.982329, -75.162053);
+		  
+		var image = new google.maps.MarkerImage(
+			'assets/marker-images/image.png',
+			new google.maps.Size(50,80),
+			new google.maps.Point(0,0),
+			new google.maps.Point(25,80)
+		);
+		var shadow = new google.maps.MarkerImage(
+			'assets/marker-images/shadow.png',
+			new google.maps.Size(94,80),
+			new google.maps.Point(0,0),
+			new google.maps.Point(25,80)
+		);
+		
+		var shape = {
+			coord: [38,0,41,1,44,2,46,3,48,4,49,5,49,6,49,7,49,8,49,9,49,10,45,11,45,12,45,13,44,14,44,15,43,16,43,17,43,18,42,19,42,20,42,21,42,22,41,23,41,24,41,25,40,26,40,27,40,28,40,29,40,30,39,31,39,32,39,33,39,34,38,35,38,36,38,37,38,38,38,39,38,40,41,41,43,42,44,43,40,44,41,45,42,46,43,47,44,48,44,49,44,50,44,51,44,52,43,53,42,54,26,55,25,56,25,57,24,58,24,59,24,60,24,61,24,62,23,63,23,64,22,65,22,66,22,67,22,68,21,69,21,70,21,71,20,72,20,73,20,74,20,75,19,76,19,77,18,78,28,79,16,79,16,78,17,77,17,76,17,75,17,74,17,73,18,72,18,71,18,70,18,69,19,68,19,67,19,66,19,65,20,64,20,63,20,62,21,61,21,60,21,59,22,58,22,57,22,56,23,55,23,54,23,53,23,52,24,51,11,50,11,49,10,48,10,47,10,46,10,45,9,44,9,43,9,42,9,41,10,40,11,39,12,38,16,37,20,36,21,35,20,34,22,33,22,32,23,31,23,30,24,29,24,28,21,27,24,26,25,25,21,24,21,23,26,22,26,21,27,20,27,19,27,18,27,17,28,16,28,15,21,14,21,13,29,12,29,11,21,10,30,9,30,8,30,7,17,6,29,5,28,4,27,3,27,2,21,1,21,0,38,0],
+			type: 'poly'
+		};
 		  
 		  var myMapStyles = [
 			  {
@@ -94,7 +114,7 @@
     	var myOptions = {
 			scrollwheel: false,
 			zoom: 14,
-			center: new google.maps.LatLng(39.980223, -75.157581),
+			center: new google.maps.LatLng(39.992223, -75.158581),
 			mapTypeControlOptions: {
 			  mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'rc_map']
 			}
@@ -104,28 +124,32 @@
 		map.mapTypes.set('rc_map', rcMapType);
   		map.setMapTypeId('rc_map');
   		
-		var marker1 = new google.maps.Marker({
-		  position: new google.maps.LatLng(39.982329, -75.162053),
-		  map: map,
-		  title:"1900 N 17th St"
+		  
+		var marker = new google.maps.Marker({
+			draggable: true,
+			raiseOnDrag: false,
+			icon: image,
+			shadow: shadow,
+			shape: shape,
+			map: map,
+			title: "Rent Campus Map Coming Soon!",
+			position: point
 		});
-		var marker2 = new google.maps.Marker({
-		  position: new google.maps.LatLng(39.974414, -75.162151),
-		  map: map,
-		  title:"1333 N 16th St"
-		});
-		var contentString = '<div id="content" style="width:400px;">'+
-		'<h2 id="firstHeading" class="firstHeading">Property Name</h2>'+
+		
+		var contentString = '<div id="content" style="width:400px;text-align:center;">'+
+		'<h2 id="firstHeading" class="firstHeading">Interactive Map Coming Soon!</h2>'+
 		'<div id="bodyContent">'+
-		'<p>Marker Content Here</p>'+
-		'<p>Amenities: </p>'+
+		'<p>Bear with us as we fine tune the interactive map for you. :-)</p>'+
+		'<p><a href="listings">View All Listings</a></p>'+
 		'</div>'+
-		'</div>'
+		'</div>';
+		
 		var infowindow = new google.maps.InfoWindow({
 		  content: contentString
 		});
-		google.maps.event.addListener(marker1, 'click', function() {
-		  infowindow.open(map,marker1);
+		infowindow.open(map,marker);
+		google.maps.event.addListener(marker, 'click', function() {
+		  infowindow.open(map,marker);
 		});
 
 		}
@@ -182,7 +206,7 @@ window.onload = loadScript;
 					<div class="one-third">
 					<img src="$ListingImages.First.Url" height="100" width="180" />
 					</div>
-						<h2 class="title"> <a href="$Link">$Title</a> </h2>
+						<h2 class="title"> <a href="/listings/show/$ID">$Title</a> </h2>
 						<h3 class="price"><span> $$Price </span> <br />
 						<small>$Bedrooms bedroom / $Bathrooms bathroom</small>
 						 </h3>
@@ -190,7 +214,7 @@ window.onload = loadScript;
 					<!--<br clear="all" />-->
 					
 					<div class="footer">
-						<a class="button" href="listings/show/$ID"> More Info </a> <a class="button" href="listings/show/$ID"> Rent Now </a>
+						<a class="button" href="/listings/show/$ID"> More Info </a> <a class="button" href="/listings/show/$ID"> Rent Now </a>
 					</div><!-- end .footer -->
 				
 				</div><!-- end .column -->
@@ -206,18 +230,7 @@ window.onload = loadScript;
     
     </div>
 <div id="right_col">
-	<div class="page-content">
-	<h3>Updates</h3>
-    <p>We'll be rolling out lots of new deals, events and services soon. <strong>Stay Tuned!</strong> </p>
-
-	<br/>
-	<p><a class="button fb-bg" href="#">Connect with Facebook</a></p>
-	<br/>
-	
-	</div>
-	
-	
-	<% include Subscribe %>
+	<% include Sidebar %>
 	
 </div>
     <div class="clear"></div>

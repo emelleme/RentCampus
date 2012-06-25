@@ -127,4 +127,17 @@ class ListingsHomePage_Controller extends Page_Controller {
 		return $j;
 		
 	}
+	
+	public function latTest($arguments){
+		$a = new RestfulService('http://maps.googleapis.com/maps/api/geocode/json?address=1931 N 7th St+19122&sensor=true');
+		$addy = $a->request();
+		if($addy->getStatusCode() == 200){
+			//Status Good. Parse geocode
+			$results = json_decode($addy->getBody());
+			$lat = $results->results[0]->geometry->location->lat;
+			$lng = $results->results[0]->geometry->location->lng;
+			$glatlng = $lat.','.$lng;
+			var_dump($results->results[0]->address_components[1]->long_name);
+		}
+	}
 }

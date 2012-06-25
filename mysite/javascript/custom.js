@@ -7,7 +7,16 @@ jQuery(document).ready(function($) {
 	/* ---------------------------------------------------------------------- */
 	/*	Custom Functions
 	/* ---------------------------------------------------------------------- */
-
+	
+	$('#shareMessage').hide();
+	$('#fbShareButton').on('mouseenter',function(){
+		$('#shareMessage').slideDown();
+	});
+	$('#appointmentNotice').hide();
+	$('#bookViewing').one('click', function(){
+		$('#appointmentNotice').slideDown('slow');
+		return false;
+	});
 	// Fixed scrollHorz effect
 	$.fn.cycle.transitions.fixedScrollHorz = function($cont, $slides, opts) {
 

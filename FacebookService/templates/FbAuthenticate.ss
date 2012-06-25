@@ -2,7 +2,7 @@
 <html> 
    <head> 
      <title>Client Flow Example</title>
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       <script>
    //Get access code from uri and pass it to server
    $(document).ready(function(){

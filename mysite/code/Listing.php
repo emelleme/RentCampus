@@ -11,7 +11,6 @@ class Listing extends Page {
 	);
 
 	public static $many_many = array(
-		'ListingImages' => 'Image'
 	);
 	
 	public function getCMSFields() {
@@ -42,10 +41,13 @@ class Listing_Controller extends Page_Controller {
 	 * @var array
 	 */
 	public static $allowed_actions = array (
+		'latTest'
 	);
 
 	public function init() {
 		parent::init();
 
 	}
+	
+	
 }

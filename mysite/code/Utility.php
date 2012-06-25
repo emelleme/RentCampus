@@ -2,15 +2,15 @@
 
 class Utility extends DataObject {
 	static $db = array(
-		'Name' => 'Varchar(65)',
-		'Description' => 'Text'
+		'name' => 'Varchar(65)',
+		'description' => 'Text'
 	);
 	static $belongs_many_many = array(
 		'Units' => 'Unit'
 	);
 	
 	static $summary_fields = array(
-		'Name'
+		'name'
 	);
 	
 	static $api_access = true;

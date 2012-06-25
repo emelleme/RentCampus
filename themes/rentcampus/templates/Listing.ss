@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
+<html lang="en" >
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# rentcampus: http://ogp.me/ns/fb/rentcampus#">
 	<% base_tag %>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta property="fb:app_id" content="173057479484090" /> 
+	<meta property="og:type"   content="rentcampus:apartment" />
+	<meta property="og:url"    content="$BaseHref/listings/show/$ID" />
+	<meta property="og:title"  content="RentCampus $PropertyType <% if Neighborhood %>on $Neighborhood<% end_if %>" />
+	<meta property="og:image"  content="$BaseHref$ListingImages.First.URL" />
+	<meta property="rentcampus:bedrooms"   content="$Bedrooms" /> 
+	<meta property="rentcampus:bathrooms"   content="$Bathrooms" /> 
+	<meta property="rentcampus:amenities_" content="<% control Amenities %><% if Last %>$Name<% else %>$Name, <% end_if %><% end_control %>" />
+	<meta property="og:description" content="$Description"/>
 	<title>Rent Campus Online </title>
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/stylenew.css" />
 	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/style.css" />
@@ -40,25 +49,6 @@
 		
 		<ul>
 			<% include Navigation %>
-			
-			<!--<li class="current">
-				<a href="home" data-description="All starts here">Home</a>
-			</li>
-			<li>
-				<a href="listings" data-description="Your New Home">For Rent</a>
-				
-			</li>
-			<li>
-				<a href="community" data-description="Posting Board">Community</a>
-				
-			</li>
-			<li>
-				<a href="about" data-description="Work we are proud of">About Us</a>
-				
-			</li>
-			<li>
-				<a href="contact-us.html" data-description="Enquire here">Contact</a>
-			</li>-->
 		</ul>
 
 	</nav><!-- end #main-nav -->
@@ -92,7 +82,10 @@
 					<div class="footer">
 						
 						<% if UnitStatus = Active %>
-						<p class="info"><a class="button medium" href="#" style="margin-top:5px;"> BOOK VIEWING </a><br />
+						<p id="appointmentNotice" class="notice">Call us today at <strong>215.825.3344</strong> to book your appointment.</p>
+						<p class="info">
+						<a id="bookViewing" class="button medium" href="#appointmentNotice" style="margin-top:5px;"> BOOK VIEWING </a>
+						<br />
 						Note: Appointments are scheduled for 30 minutes with 24 hour advance notice.</br>
 						<strong>Monday</strong>: 11:00 am - 5:00 pm<br />
 						<strong>Tuesday</strong>: 11:00 am - 5:00 pm<br />
@@ -132,17 +125,19 @@
 		<% else %>
 		<p class="error">UNIT HAS BEEN RENTED</p>
 		<% end_if %>
+		<textarea id="shareMessage" style="width:166px;" placeholder="Enter an optional message to post"></textarea><br/>
+		<p style="text-align: center;"><a id="fbShareButton" class="button fb-bg" href="#"> Share on Facebook</a></p>
 		<span class="acc-trigger">
 			<h4><a href="#">Property Details</a></h4>
 		</span>
 
 		<div class="acc-container">
 			<div class="content">
-			<p><strong>Unit #</strong>:$UnitNumber<br/>
-			<strong>Square Feet</strong>:$UnitSize<br/>
-			<strong>Bedrooms</strong>:$Bedrooms<br/>
-			<strong>Bathrooms</strong>:$Bathrooms<br/>
-			<strong>Rental Term</strong>:$MinimumRentalTerm<br/>
+			
+			<% if UnitSize != 0 %><strong>Square Feet</strong>: $UnitSize<br/><% end_if %>
+			<strong>Bedrooms</strong>: $Bedrooms<br/>
+			<strong>Bathrooms</strong>: $Bathrooms<br/>
+			<strong>Rental Term</strong>: $MinimumRentalTerm<br/>
 			<strong>Status</strong>: $UnitStatus<br/></p>
 			</div>
 		</div><!-- end .acc-container -->
@@ -179,7 +174,7 @@
 
 		
 		<ul class="star dotted">
-		<li><a href="">Share with Friends</a></li>
+		<li><a href="">Add to Favorites</a></li>
 		</ul>
 		
 		<ul class="arrow-2 dotted">
@@ -189,7 +184,7 @@
 	
 	<div class="page-content">
 	
-		<img src="http://maps.googleapis.com/maps/api/staticmap?center=39.981192,-75.14611550000001&zoom=16&size=200x200&maptype=roadmap&markers=icon:http://phillypolice.com/assets/icons/map/homemarker.png|(39.981192,%20-75.14611550000001)&sensor=true" height="180" width="180" />
+		<a href="https://maps.google.com/?q=$GLatLng" ><img src="http://maps.googleapis.com/maps/api/staticmap?center=$GLatLng&zoom=15&format=png&sensor=false&size=180x180&maptype=roadmap&style=feature:road.arterial|lightness:-27|gamma:2.62|visibility:on&style=feature:road.local|gamma:0.7|visibility:on|hue:0xff0000|lightness:12&style=feature:landscape.man_made|visibility:on|saturation:-1|lightness:28&style=feature:poi.school|hue:0xff0900|lightness:-13|saturation:-9|gamma:0.95&style=feature:poi.park|lightness:-31&style=feature:poi.sports_complex|visibility:on|gamma:0.98|lightness:-14&style=feature:transit.line|invert_lightness:true&style=feature:road.highway|lightness:-15|gamma:0.7&style=feature:administrative.land_parcel|lightness:-18&markers=icon:http://phillypolice.com/assets/icons/map/homemarker.png|($GLatLng)&sensor=true" height="180" width="180" /></a>
 	</div>
 	
 	</div>
