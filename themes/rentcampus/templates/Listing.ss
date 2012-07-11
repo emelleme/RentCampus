@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" >
+<html lang="en">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# rentcampus: http://ogp.me/ns/fb/rentcampus#">
 	<% base_tag %>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -63,20 +63,25 @@
                 	
             	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
 		    <div class="page-content">
+		    <% if ListingImages %>
 				<section class="simple-pricing-table col3 clearfix">
+			<% else %>
+				<section class="simple-pricing-table col2 clearfix">
+			<% end_if %>
 
 				<div class="column featured">
 
 					<div class="header">
 						<h3 class="title"> $Title </h3>
-						<h3 class="price">$Bedrooms bedroom<br /> <span> $$Price </span> <br />
+						<h3 class="price"><% if Bedrooms = -1 %> Room for Rent <% else if Bedrooms = 0 %> Studio <% else %>$Bedrooms bedroom<% end_if %> 
+						<br /> <span> $$Price </span> <br />
 						 </h3>
 						<h5 class="description"> $Description </h5>
 					</div><!-- end .header -->
 
 					<p class="features">
 						<strong>Property Type</strong>: Apartment<br/>
-						$Bedrooms bedroom / $Bathrooms bathroom
+						<% if Bedrooms = -1 %> Room for Rent <% else if Bedrooms = 0 %> Studio <% else %>$Bedrooms bedroom<% end_if %> / $Bathrooms bathroom
 					</p><!-- end .features -->
 
 					<div class="footer">
@@ -103,7 +108,7 @@
 				<aside id="sidebar">
 
 				<% control ListingImages %>
-				<a href="$Link" class="image-gallery" title="$Parent.Parent.Title" rel="group-one"><img src="$CroppedImage(270,100).Url"/></a>
+				<a href="$Link" class="image-gallery" title="$Parent.Parent.Title" rel="group-one"><img id="image_$ID" src="$CroppedImage(270,100).Url"/></a>
 				<% end_control %>
 				</aside>
 			</section><!-- end .simple-pricing-table -->
@@ -122,6 +127,7 @@
     <div class="page-content">
 		<% if UnitStatus = Active %>
 		<p style="text-align: center;"><a class="button large" href="#"> RENT IT NOW! </a></p>
+		<p style="text-align: center;"><a class="button large" href="apply"> Apply Online </a></p>
 		<% else %>
 		<p class="error">UNIT HAS BEEN RENTED</p>
 		<% end_if %>
@@ -143,7 +149,7 @@
 		</div><!-- end .acc-container -->
 		
 		<span class="acc-trigger">
-			<h4><a href="#">Amenities</a></h4>
+			<h4><a href="#">Features</a></h4>
 		</span>
 
 		<div class="acc-container">

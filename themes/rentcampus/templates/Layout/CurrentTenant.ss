@@ -14,7 +14,7 @@
 				</div><!-- end .header -->
 			</div>
 			<section class=" col5 featured clearfix">
-				<h5 class="description">My Properties</h5>
-				<p>Your account is being verified. You will recieve a notification via email when verification is complete.</p>
+				<h5 class="description">My Account</h5>
+				<p>Updates soon!</p>
 			</section>
 		    </div>

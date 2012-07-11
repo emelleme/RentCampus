@@ -13,18 +13,14 @@
 					<hr>
 				</div><!-- end .header -->
 			</div>
-			<section class="extended-pricing-table col5 featured clearfix">
+			<section class="extended-pricing-table col4 featured clearfix">
 				<h5 class="description">My Progress</h5>
 				<div class="column features-list">
 				<ul class="features">
-					<li data-tooltip="Sign up for an account online.">Step 1 - Register Online</li>
-					<li data-tooltip="Complete Rental Application online or in person">Step 2 - Complete Application</li>
-					<li data-tooltip="Book an Appointment to View a Place">Step 3 - Book Appointment</li>
-					<li data-tooltip="Tooltip - Optional description of the feature can go here!">Step 4</li>
-					<li data-tooltip="Tooltip - Optional description of the feature can go here!">Step 5</li>
-					<li data-tooltip="Tooltip - Optional description of the feature can go here!">Step 6</li>
-					<li data-tooltip="Tooltip - Optional description of the feature can go here!">Step 7</li>
-					<li data-tooltip="Tooltip - Optional description of the feature can go here!">Step 8</li>
+					<li data-tooltip="Sign up for an account online.">Step 1 - Connect with Facebook</li>
+					<li data-tooltip="Search our Listings">Step 2 - Search for an Apartment</li>
+					<li data-tooltip="Choose your favorite listings">Step 3 - Choose your favorites</li>
+					<li data-tooltip="Book an appointment to view your favorite listings">Step 4 - Call for an appointment</li>
 				</ul><!-- end .features -->
 				</div>
 				
@@ -34,10 +30,6 @@
 					<li data-feature="Voters &amp; votes">&mdash;</li>
 					<li data-feature="Ideas">&mdash;</li>
 					<li data-feature="Comments">&mdash;</li>
-					<li data-feature="Moderation tools">&mdash;</li>
-					<li data-feature="Sign-in / singup options">&mdash;</li>
-					<li data-feature="Widget tracking">&mdash;</li>
-					<li data-feature="Admins / moderators">&mdash;</li>
 				</ul><!-- end .features -->
 				</div>
 			</section>

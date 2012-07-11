@@ -3,6 +3,7 @@
 class Unit extends DataObject{
 
 	public static $db = array(
+		"OldID" => "Int",
 		"Title" => "Varchar(100)",
 		"Featured" => "Boolean",
 		"Description" => "Text",
@@ -41,7 +42,7 @@ class Unit extends DataObject{
 	);
 	
 	function canEdit($member = null){
-		if(permission::check('ADMIN')){
+		if(permission::check('AGENT')){
 		    return true;
 		}else{
 		    return false;
@@ -62,7 +63,10 @@ class Unit extends DataObject{
 	
 	static $summary_fields = array(
 		'Title' => 'Title',
-		'UnitStatus' => 'Unit Status'
+		'Bedrooms' => 'Bedrooms',
+		'Bathrooms' => 'Bathrooms',
+		'UnitStatus' => 'Unit Status',
+		'Amenities.Name' => 'Amenities.Name'
 	);
 	
 	//The class of the page which will list this DataObject
@@ -72,9 +76,9 @@ class Unit extends DataObject{
     static $singular_name = 'Unit';
     
     public function onBeforeWrite(){
-    	if(!$this->record['GLatLng'] || !$this->record['Neighborhood']) {
+    	/*if(!@$this->record['GLatLng'] || !@$this->record['Neighborhood']) {
     		//Get Latitude and Longitude
-    		$a = new RestfulService('http://maps.googleapis.com/maps/api/geocode/json?address='.$this->record['Address'].'+'.$this->record['ZipCode'].'&sensor=true');
+    		$a = new RestfulService('http://maps.googleapis.com/maps/api/geocode/json?address='.$this->record['Address'].'+Philadelphia,PA+'.$this->record['ZipCode'].'&sensor=false');
 		$addy = $a->request();
 		if($addy->getStatusCode() == 200){
 			//Status Good. Parse geocode
@@ -86,7 +90,7 @@ class Unit extends DataObject{
 			$this->record['GLatLng'] = $glatlng;
 			$this->record['Neighborhood'] = $n;
 		}
-	 	}
+	 	}*/
  	parent::onBeforeWrite();
     }
     
@@ -94,6 +98,7 @@ class Unit extends DataObject{
 		$f = parent::getCMSFields();
 		$f->renameField('Content','Full Description');
 		$f->removeFieldFromTab('Root.Main','Neighborhood');
+		$f->removeFieldFromTab('Root.Main','OldID');
 		$f->addFieldToTab('Root.AddressInfo', new TextField('Address', 'Address'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('UnitNumber', 'Unit Number'));
  		$f->addFieldToTab('Root.AddressInfo', new TextField('ZipCode', 'ZipCode'));
@@ -130,7 +135,7 @@ class Unit extends DataObject{
  		
  		$f->addFieldToTab("Root.ListingImages", new MultipleFileAttachmentField('ListingImages','Listing Images'));
  		
- 		$f->addFieldToTab('Root.UnitInfo', new TextField('Bedrooms','Number of Bedrooms'));
+ 		$f->addFieldToTab('Root.UnitInfo', new TextField('Bedrooms','Number of Bedrooms (enter "0" for Studio, and "-1" for Room for Rent'));
  		$f->addFieldToTab('Root.UnitInfo', new TextField('Bathrooms','Number of Bathrooms'));
  		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitSize', 'Square Feet (e.g. 650)'));
  		$f->addFieldToTab('Root.UnitInfo', new DropDownField('PropertyType','PropertyType',singleton('Unit')->dbObject('PropertyType')->enumValues()));

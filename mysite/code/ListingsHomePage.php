@@ -37,6 +37,14 @@ class ListingsHomePage_Controller extends Page_Controller {
 	}
 	
 	public function show($arguments) {
+		if($member = Member::currentUser()){
+			if ($member->FacebookId != null){
+				$token = Session::get('AuthToken');
+				$graph_url = "https://graph.facebook.com/me?fields=cover,picture&access_token=" . $token;
+				$user = json_decode(file_get_contents($graph_url));
+				//var_dump($user);
+			}
+		}
 		$id = Director::URLParam('ID');
 		$d = DataObject::get_by_id('Unit',$id);
 		return $this->customise($d)->renderWith('Listing','Listing');
@@ -64,7 +72,11 @@ class ListingsHomePage_Controller extends Page_Controller {
 		}
 		foreach ($d as $data)
 		{
-			 $img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			$img = false;
+			$images = $data->ListingImages()->getIdList();
+			if(!empty($images)){
+				$img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			}
 			$b = array(
 			"id" => $data->ID,
 			"title" => $data->Title,
@@ -90,7 +102,11 @@ class ListingsHomePage_Controller extends Page_Controller {
 		}
 		foreach ($d as $data)
 		{
-			 $img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			$img = false;
+			$images = $data->ListingImages()->getIdList();
+			if(!empty($images)){
+				$img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			}
 			$b = array(
 			"id" => $data->ID,
 			"title" => $data->Title,
@@ -108,11 +124,15 @@ class ListingsHomePage_Controller extends Page_Controller {
 	
 	public function all($arguments){
 		$id = Director::URLParam('ID');
-		$d = DataObject::get('Unit');
+		$d = DataObject::get('Unit',null,null,null,"30");
 		$a = array();
 		foreach ($d as $data)
 		{
-			 $img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			$img = false;
+			$images = $data->ListingImages()->getIdList();
+			if(!empty($images)){
+				$img = $data->getManyManyComponents('ListingImages')->First()->Filename;
+			}
 			$b = array(
 			"id" => $data->ID,
 			"title" => $data->Title,

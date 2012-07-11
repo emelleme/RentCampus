@@ -67,7 +67,7 @@
 		    	<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;width:160px;"/></span>
 		    	<span>
 		    	Bedrooms:
-		    	<select id="bedrooms" ng-model="bedroom" ng-options="b.count for b in bedrooms" ng-click="bedroomclickAction()" style="width:50px;">
+		    	<select id="bedrooms" ng-model="bedroom" ng-options="b.label for b in bedrooms" ng-click="bedroomclickAction()" style="width:50px;">
 				</select>
 				</span>
 				<span>
@@ -95,8 +95,7 @@
 						<h3 class="price"><span> {{listing.price}} </span> <br />
 						<small>{{listing.bedrooms}} bedroom / {{listing.bathrooms}} bathroom</small>
 						 </h3>
-						<p class="description">{{listing.snippet}}</p>
-					</div>
+						<div class="description">{{listing.snippet}}</div>
 				</section>
 
 				
@@ -113,9 +112,9 @@
 	<% include Sidebar %>
 	<!--<div class="page-content">
 	
-		<img src="http://maps.googleapis.com/maps/api/staticmap?center=39.981192,-75.14611550000001&zoom=16&size=200x200&maptype=roadmap&markers=icon:http://phillypolice.com/assets/icons/map/homemarker.png|(39.981192,%20-75.14611550000001)&sensor=true" height="180" width="180" />
-	</div>-->
-	
+		<img src="http://maps.googleapis.com/maps/api/staticmap?center=39.981292,-75.159616&zoom=16&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.arterial|lightness:-27|gamma:2.62|visibility:on&style=feature:road.local|gamma:0.7|visibility:on|hue:0xff0000|lightness:12&style=feature:landscape.man_made|visibility:on|saturation:-1|lightness:28&style=feature:poi.school|hue:0xff0900|lightness:-13|saturation:-9|gamma:0.95&style=feature:poi.park|lightness:-31&style=feature:poi.sports_complex|visibility:on|gamma:0.98|lightness:-14&style=feature:transit.line|invert_lightness:true&style=feature:road.highway|lightness:-15|gamma:0.7&style=feature:administrative.land_parcel|lightness:-18&markers=icon:http://phillypolice.com/assets/icons/map/homemarker.png|(39.981192,%20-75.14611550000001)&sensor=true" height="180" width="180" />
+	</div>
+	-->
 	</div>
 
     <div class="clear"></div>

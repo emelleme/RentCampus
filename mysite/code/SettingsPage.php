@@ -29,11 +29,11 @@ class SettingsPage_Controller extends Page_Controller {
 		$graph_url = "https://graph.facebook.com/me?fields=cover,picture&access_token=" . $token;
 		$user = json_decode(file_get_contents($graph_url));
 		$member->Avatar = $user->picture;
-		$member->CoverPhotoa = new GD($user->cover->source);
+		/*$member->CoverPhotoa = new GD($user->cover->source);
 		$folder = $this->ParentID ? $this->Parent()->Filename : ASSETS_DIR . "/"; 
 		$member->CoverPhoto = ASSETS_DIR ."/coverphotos/" . $member->FacebookId.".jpg";
 		$member->CoverPhotoa->resizeByWidth(626)->crop($user->cover->offset_y+75,0,626,160)->writeTo(Director::baseFolder(). '/' .$member->CoverPhoto);
-		
+		*/
 		//var_dump($member->CoverPhotoa->hasGD());	
 	}
 	
@@ -54,6 +54,10 @@ class SettingsPage_Controller extends Page_Controller {
 		}else if($member->inGroup(11)){ //Community Member
 			$member->GroupName = DataObject::get_by_id('Group',11)->Title;
 			return $this->renderWith(array('CommunityMember','SettingsPage'));
+		}else if($member->inGroup(6)){ //Community Member
+			Director::redirect('/admin');
+		}else{
+			return $this->renderWith(array('NewMember','SettingsPage'));
 		}
 	}
 	

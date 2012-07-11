@@ -1,27 +1,28 @@
-
+ <div id="footer_wrapper">
+    
     <div id="footer">
     
     <div class="padding">
     
     <ul class="one">
     <li class="header">Listings</li>
-    <li><a href="/events">Latest Listings</a></li>
-    <li><a href="/events/tickets">All Listings</a></li>
-    <li><a href="/events/past">Search Listings</a></li>
+    <li><a href="listings">Latest Listings</a></li>
+    <li><a href="listings">All Listings</a></li>
+    <li><a href="listings">Search Listings</a></li>
 	
     </ul>
     
     <ul class="two">
     <li class="header">About</a></li>
     <li><a href="/about">About Us</a></li>
-    <li><a href="/about/members">Privacy Policy</a></li>
-    <li><a href="/about/join">Terms of Service</a></li>
+    <li><a href="privacy">Privacy Policy</a></li>
+    <li><a href="terms">Terms of Service</a></li>
     </ul>
     
     <ul class="three">
     <li class="header">Contact</li>
     <li><a href="/contact">Contact Us</a></li>
-    <li><a href="/contact/co-sponsorship/">Landlord Portal</a></li>
+    <!--<li><a href="#">Landlord Portal</a></li> -->
     <li>&nbsp;</li>
     
     </ul>
@@ -39,7 +40,7 @@
 		Philadelphia,Pa 19121<br />
 	</li>
 	<li class="header">Phone</li>
-    <li>215.895.2575</li>
+    <li>215.825.3344</li>
     <li>&nbsp;</li>
     </ul>
     
@@ -52,7 +53,5 @@
     <a href="http://picasaweb.google.com/RentCampus" target="_blank"><img src="themes/rentcampus/images/picasa.png" width="54" height="54" border="0" /></a>
 	<a href="http://rentcampusonline.blogspot.com/" target="_blank"><img src="themes/rentcampus/images/blogger.png" alt="" width="54" height="54" border="0" /></a>
     </div>
-    
-    
-    </div>
-    <!-- /footer -->
+
+</div>

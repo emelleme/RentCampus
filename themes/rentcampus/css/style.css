@@ -28,7 +28,7 @@ p {padding: 0 0 12px 0; margin: 0;}
 
 h1 {font: 30px/36px "Trebuchet MS", Helvetica, Arial, sans-serif; padding: 0 0 6px 0; font-weight: bold;}
 h2 {font: 21px/30px "Trebuchet MS", Helvetica, Arial, sans-serif; padding: 0 0 12px 0; font-weight: bold;}
-h3 {font: 18px/21px "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: bold; padding: 0 0 9px 0;}
+h3 {font: 18px/21px "Trebuchet MS", Helvetica, Arial, sans-serif; padding: 0 0 9px 0;}
 h4 {font: 15px/18px "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: bold; padding: 0 0 9px 0;}
 h5 {font: 12px/15px "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: bold;}
 h6 {font: 9px/12px "Trebuchet MS", Helvetica, Arial, sans-serif; }
@@ -243,7 +243,6 @@ border: 1px solid #DEDEDE;
 	color:#DA3A45;
 	font-family: 'Black Ops One','Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 	font-size: 20px;
-	font-weight: 800;
 	display: block;
 	letter-spacing: -0.08px;
 }

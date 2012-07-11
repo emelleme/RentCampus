@@ -173,7 +173,7 @@ window.onload = loadScript;
 
 <div id="wrapper">
 
-	<div id="container">
+<div id="container">
 	
 	<nav id="main-nav">
 		
@@ -193,8 +193,7 @@ window.onload = loadScript;
 	
 	<div id="left_col">
     	<div id="mainLeft">
-                	
-            	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
+        	<!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
 		    <div class="page-content">
 				$Content
 				<section class="simple-pricing-table col2 clearfix">
@@ -221,95 +220,27 @@ window.onload = loadScript;
 				<% end_control %>
 				</section>
 		    </div>
-                
                 <!-- HOME PAGE CONTENT DISPLAYED INITIALLY -->
-            
         </div>
-        
-       
-    
     </div>
-<div id="right_col">
+	<div id="right_col">
 	<% include Sidebar %>
 	
-</div>
+	</div>
     <div class="clear"></div>
-</div>
-
-<!-- MAIN CONTENT -->
-
-        <!-- /main -->
+	</div>
+    <!-- /main -->
         
-        <div class="clear"></div>
+    <div class="clear"></div>
         
-        <div id="main_footer"></div>
+    <div id="main_footer"></div>
                 
-        <div class="clear"></div>
+    <div class="clear"></div>
         
-    </div>
-    <!-- /container -->
-        
-    </div>
-    <!-- /footer wrapper -->
-    
-    <div id="footer_wrapper">
-    
-    <div id="footer">
-    
-    <div class="padding">
-    
-    <ul class="one">
-    <li class="header">Listings</li>
-    <li><a href="/events">Latest Listings</a></li>
-    <li><a href="/events/tickets">All Listings</a></li>
-    <li><a href="/events/past">Search Listings</a></li>
+</div>
+<!-- /container -->
 	
-    </ul>
-    
-    <ul class="two">
-    <li class="header">About</a></li>
-    <li><a href="/about">About Us</a></li>
-    <li><a href="/about/members">Privacy Policy</a></li>
-    <li><a href="/about/join">Terms of Service</a></li>
-    </ul>
-    
-    <ul class="three">
-    <li class="header">Contact</li>
-    <li><a href="/contact">Contact Us</a></li>
-    <li><a href="/contact/co-sponsorship/">Landlord Portal</a></li>
-    <li>&nbsp;</li>
-    
-    </ul>
-    
-    <ul class="four">
-    	<li class="header">Posting Board</li>
-		<li><a href="#" target="_blank">For Sale</a></li>
-	 	<li><a href="#" target="_blank">Services</a></li>
-	 	<li><a href="#" target="_blank">Jobs</a></li>
-    </ul>
-    
-    <ul class="five">
-    <li class="header">Main Office</li>
-    <li>1414 W Oxford St. <br/>
-		Philadelphia,Pa 19121<br />
-	</li>
-	<li class="header">Phone</li>
-    <li>215.825.3344</li>
-    <li>&nbsp;</li>
-    </ul>
-    
-    <div class="links">
-    <a href="http://www.youtube.com/rentcampus" target="_blank"><img src="themes/rentcampus/images/youTube.png" width="54" height="54" border="0" /></a>
-	<a href="http://www.facebook.com/pages/RentCampus/115296141847785" target="_blank"><img src="themes/rentcampus/images/facebook.png" width="54" height="54" border="0" /></a>
-    </div>
-
-<div class="links">
-    <a href="http://picasaweb.google.com/RentCampus" target="_blank"><img src="themes/rentcampus/images/picasa.png" width="54" height="54" border="0" /></a>
-	<a href="http://rentcampusonline.blogspot.com/" target="_blank"><img src="themes/rentcampus/images/blogger.png" alt="" width="54" height="54" border="0" /></a>
-    </div>
-    
-    
-    </div>
+	<% include Footer %>
     <!-- /footer -->
     
 </div>
