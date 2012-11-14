@@ -44,10 +44,15 @@ class ResidentRole extends DataObjectDecorator {
 				'Bio' => 'Text',
 				'FacebookVerified' => 'Boolean',
 				'FacebookLocale' => 'Varchar',
-				'FacebookTimezone' => 'Varchar'
+				'FacebookTimezone' => 'Varchar',
+				'Cosigner' => 'Varchar'
 			),
 			'belongs_many_many' => array(
-				'FavoriteListings' => 'Unit'
+				'FavoriteListings' => 'Unit',
+				'CurrentResident' => 'Unit'
+			),
+			'has_one' => array(
+				'Application' => 'Application'
 			)
 		);
 		

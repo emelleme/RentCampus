@@ -5,13 +5,12 @@
 	<% base_tag %>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Rent Campus Online </title>
-	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/stylenew.css" />
-	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/typography.css" />
-	<link rel="stylesheet" type="text/css" href="themes/rentcampus/css/form.css" />
+	<% require themedCSS(stylenew) %>
+	<% require themedCSS(style) %>
+	<% require themedCSS(typography) %>
+	<% require themedCSS(form) %>
 	
-
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="mysite/javascript/respond.min.js"></script>
     <script src="mysite/javascript/jquery.easing-1.3.min.js"></script>

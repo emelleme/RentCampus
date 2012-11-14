@@ -37,17 +37,49 @@ class ListingsHomePage_Controller extends Page_Controller {
 	}
 	
 	public function show($arguments) {
+		$base = Director::absolutebaseURL();
+		$link = $arguments->getURL().'/';
 		if($member = Member::currentUser()){
 			if ($member->FacebookId != null){
 				$token = Session::get('AuthToken');
 				$graph_url = "https://graph.facebook.com/me?fields=cover,picture&access_token=" . $token;
 				$user = json_decode(file_get_contents($graph_url));
-				//var_dump($user);
+				
+				$a = new RestfulService('https://graph.facebook.com/me/rentcampus:view?apartment='.$base.$link.'&access_token='. $token);
+		 		$c = $a->request('','POST');//var_dump($c->getBody());
 			}
 		}
 		$id = Director::URLParam('ID');
 		$d = DataObject::get_by_id('Unit',$id);
+		$d->ThisURL = $base.$link;
 		return $this->customise($d)->renderWith('Listing','Listing');
+	}
+	
+	public function share($arguments)
+	{
+		$base = Director::absolutebaseURL();
+		$msg = $arguments->requestVar('msg');
+		$link = 'listings/show/'.$arguments->param('ID').'/';
+		$sharelink = 'listings/share/'.$arguments->param('ID').'/?msg='.$msg;
+		
+		if($msg == ''){
+			$msg = 'Hey! I just viewed a listing on http://RentCampusOnline.com. Check it out!';
+		}
+		if($member = Member::currentUser()){
+			if ($member->FacebookId != null){
+				//Share note to users timeline
+				$token = Session::get('AuthToken');
+				if($token == null ){
+					Director::redirect('https://www.facebook.com/dialog/oauth?client_id=173057479484090&scope=email,sms,offline_access,publish_stream,user_about_me,user_birthday,publish_actions,friends_about_me,friends_actions:rentcampus&redirect_uri='.$base.$sharelink.'&response_type=code%20token');
+				}
+				$e = new RestfulService('https://graph.facebook.com/me/feed?link='.$base.$link.'&message='.$msg.'&access_token='. $token);
+		 		$f = $e->request('','POST');
+			}
+		}else{
+			header('Location:https://www.facebook.com/dialog/oauth?client_id=173057479484090&scope=email,sms,offline_access,publish_stream,user_about_me,user_birthday,publish_actions,friends_about_me,friends_actions:rentcampus&redirect_uri='.$base.$sharelink.'&response_type=code%20token');
+				
+		}
+		Director::redirect($base.$link);
 	}
 	
 	public function none($arguments)
@@ -124,7 +156,7 @@ class ListingsHomePage_Controller extends Page_Controller {
 	
 	public function all($arguments){
 		$id = Director::URLParam('ID');
-		$d = DataObject::get('Unit',null,null,null,"30");
+		$d = DataObject::get('Unit',"UnitStatus='Active'",null,null,"30");
 		$a = array();
 		foreach ($d as $data)
 		{
@@ -140,7 +172,8 @@ class ListingsHomePage_Controller extends Page_Controller {
 			"snippet" => $data->Description,
 			"bedrooms" => $data->Bedrooms,
 			"bathrooms" => $data->Bathrooms,
-			"img" => $img);
+			"img" => $img,
+			"rented" => $data->Rented);
 			array_push($a,$b);
 		}
 		$j = json_encode($a);

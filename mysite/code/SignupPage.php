@@ -9,7 +9,7 @@ class SignupPage extends Page {
 	);
 
 }
-class SignupPage_Controller extends Page_Controller {
+class SignupPage_Controller extends ContentController {
 	public static $allowed_actions = array (
 	);
 
@@ -48,7 +48,7 @@ class SignupPage_Controller extends Page_Controller {
 			$member = DataObject::get_one('Member', "FacebookId = '".$user->id."'"); ;
 			if($member){
 				$member->logIn();
-				Director::redirect("/settings");
+				Director::redirect(Session::get("BackURI"));
 			}else{
 				//New Member. Get Member info and create record
 				if(!$token){
@@ -73,7 +73,7 @@ class SignupPage_Controller extends Page_Controller {
 			
 				//var_dump($user);
 				//exit;
-				Director::redirect('/settings');
+				Director::redirect(Session::get("BackURI"));
 			}
 		}
 	}
@@ -89,7 +89,7 @@ class SignupPage_Controller extends Page_Controller {
 		$member = DataObject::get_one('Member', "FacebookId = '".$user->id."'"); ;
 		if($member){
 			$member->logIn();
-			Director::redirect("/settings");
+			Director::redirect(Session::get("BackURL"));
 		}else{
 			//New Member. Get Member info and create record
 			if(!$token){
@@ -108,23 +108,24 @@ class SignupPage_Controller extends Page_Controller {
 			$m->Gender = @$user->gender;
 			$m->Email = (!@empty($user->email)) ? $user->email : $user->id;
 			$m->write();
-			//$m->addToGroupByCode('weightwatchr', 'WeightWatchr');
+			$m->addToGroupByCode('potential-tenant', 'Potential Tenant');
 			$m->write();
 			$m->logIn();
 			
 			//var_dump($user);
 			//exit;
-			Director::redirect('/settings');
+			Director::redirect(Session::get("BackURL"));
 		}
 	}
 	
-	public function go(){
+	public function go($arguments){
 	//Session::clear_all();
 		//Check Request Variable
-		
+		$back = $arguments->requestVar('BackURL');
+		Session::set("BackURI", $back);
 			//Code value sent. Get auth token, and create new user.
 		$token = Session::get('AuthToken');
 		//get token from url hash
-		return $this->renderWith('FbAuthenticate');
+		return $this->customise(array('BackURL'=>$back))->renderWith('FbAuthenticate');
 	}
 }

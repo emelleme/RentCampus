@@ -82,20 +82,33 @@
 				<section class="simple-pricing-table col2 clearfix">
 					<header class="page-header"><h1>Listings</h1></header>
 				
+
+						<div class="column">
+							<div class="header">
+								<div class="one-third">
+									<img src="http://dev.rent-campus.com/assets/units/NZL0n_lg.jpg" height="180" width="180" />
+								</div>
+								<h2 class="title"> <a href="listings/show/165">Featured Listing <br>1931 N Uber St Unit B</a> </h2>
+								<h3 class="price"><span> $1800.00  </span> <br />
+								</h3>
+								<h4>4 bedroom / 2 bathroom</h4>
+							 </div>
+					<div class="clear"></div>
 					<p id="listingNotice" class="{{listingNoticeClass}}">{{listingNoticeMessage}}</p>
 					<div id="listingList">
 						<div class="column" ng-repeat="listing in listings">
-
-						<div class="header">
-						<div class="one-third">
-						<!--<img src="$CroppedImage(270,100).Url"/>-->
-						<img ng-src="{{listing.img}}" height="180" width="180" />
+							<div class="header">
+								<div class="one-third">
+								<!--<img src="$CroppedImage(270,100).Url"/>-->
+								<img ng-src="{{listing.img}}" height="180" width="180" />
+								</div>
+								<h2 class="title"> <a href="listings/show/{{listing.id}}">{{listing.title}}</a> </h2>
+								<h3 class="price"><span> {{listing.price}} </span> <br />
+								<small>{{listing.bedrooms}} bedroom / {{listing.bathrooms}} bathroom</small>
+								 </h3>
+								<div class="description">{{listing.snippet}}</div>
 						</div>
-						<h2 class="title"> <a href="listings/show/{{listing.id}}">{{listing.title}}</a> </h2>
-						<h3 class="price"><span> {{listing.price}} </span> <br />
-						<small>{{listing.bedrooms}} bedroom / {{listing.bathrooms}} bathroom</small>
-						 </h3>
-						<div class="description">{{listing.snippet}}</div>
+					</div>
 				</section>
 
 				

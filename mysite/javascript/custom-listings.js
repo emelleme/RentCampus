@@ -19,7 +19,9 @@ function ListingController($scope,$http,$location){
 	$scope.bathrooms = [
 	{count:1},
 	{count:2},
-	{count:3}
+	{count:3},
+	{count:4},
+	{count:5}
 	];
 	$scope.bathroom = $scope.bathrooms[0];
 	
@@ -29,10 +31,12 @@ function ListingController($scope,$http,$location){
 	$http.get('listings/all').success(function(data) {
 		
 		angular.forEach(data, function(listing, i){
-			if (listing.img == false) {
-				listing.img = 'assets/large-default.jpg'
-			};
-			console.log(listing.img)
+			if (listing.rented == true) {
+					listing.img = 'assets/rented.png'
+				}else if(listing.img == false){
+					listing.img = 'assets/large-default.jpg'
+				}
+			//console.log(listing.rented)
 		});
 		$scope.listings = data;
 		//console.log($scope.listings);
@@ -41,9 +45,11 @@ function ListingController($scope,$http,$location){
 	$scope.bedroomclickAction = function(){
 		$http.get('listings/search/Bedrooms/'+$scope.bedroom.count+'/'+$scope.bathroom.count).success(function(data) {
 			angular.forEach(data, function(listing, i){
-				if (listing.img == false) {
+				if (listing.rented == true) {
+					listing.img = 'assets/rented.png'
+				}else if(listing.img == false){
 					listing.img = 'assets/large-default.jpg'
-				};
+				}
 				console.log(listing.img)
 			});
 		
@@ -62,9 +68,11 @@ function ListingController($scope,$http,$location){
 	$scope.bathroomclickAction = function(){
 		$http.get('listings/search/Bathrooms/'+$scope.bathroom.count+'/'+$scope.bedroom.count).success(function(data) {
 			angular.forEach(data, function(listing, i){
-				if (listing.img == false) {
+				if (listing.rented == true) {
+					listing.img = 'assets/rented.png'
+				}else if(listing.img == false){
 					listing.img = 'assets/large-default.jpg'
-				};
+				}
 				console.log(listing.img)
 			});
 		$scope.listings = data;

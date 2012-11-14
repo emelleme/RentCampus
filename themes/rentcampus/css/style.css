@@ -33,6 +33,33 @@ h4 {font: 15px/18px "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: b
 h5 {font: 12px/15px "Trebuchet MS", Helvetica, Arial, sans-serif; font-weight: bold;}
 h6 {font: 9px/12px "Trebuchet MS", Helvetica, Arial, sans-serif; }
 
+/* - - - Animations - -	- */
+@keyframes blinkButton {
+from {background:white;
+color:#3B5998;padding: 5px 16px;
+                border: 1px solid #3B5998;}
+to {background:#3B5998;
+colorwhite;padding: 5px 16px;
+                border: 1px solid #3B5998;}
+}
+
+@-moz-keyframes	blinkButton {
+from {background:white;color:#3B5998;padding: 5px 16px;border: 1px solid #3B5998;}
+to {background:#3B5998;colorwhite;padding: 5px 16px;border: 1px solid #3B5998;}
+}
+
+@-webkit-keyframes blinkButton{
+from {background:white;color:#3B5998;padding: 5px 16px;border: 1px solid #3B5998;}
+to {background:#3B5998;colorwhite;padding: 5px 16px;border: 1px solid #3B5998;}
+}
+
+.button.fb-bg {
+animation: blinkButton 1.2s;
+-moz-animation: blinkButton 1.2s;
+-webkit-animation: blinkButton 1.2s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-direction: alternate;	
+}
 /* - - - Navigation - - - */
 
 

@@ -123,14 +123,37 @@ blockquote {
 	.button.medium { font-size: 13px; }
 
 	.button.large { font-size: 15px; }
+
+/* - - - Animations - - - */
+@keyframes blinkButton {
+from {background:white;}
+to {background:#3B5998;}
+}
+
+@-moz-keyframes blinkButton {
+from {background:white;}
+to {background:#3B5998;}
+}
+
+@-webkit-keyframes blinkButton{
+from {background:white;}
+to {background:#3B5998;}
+}
+
 .button.fb-bg {
+padding: 5px 16px;border: 1px solid #3B5998;
+animation: blinkButton 2s;
+-moz-animation: blinkButton 2s;
+-webkit-animation: blinkButton 2s;
+}
+/*.button.fb-bg {
 		background: none;
 		color: #3B5998;
 		padding: 5px 16px;
 		border: 1px solid #3B5998;
 	}
 
-		.button.fb-bg:hover {
+*/		.button.fb-bg:hover {
 			background: #3B5998;
 			color: #fff;
 			border: 1px solid #3B5998;

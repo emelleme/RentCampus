@@ -41,6 +41,72 @@ class HomePage_Controller extends Page_Controller {
 
 	}
 	
+	public function listingsLocations($arguments){
+		
+		$addys = DataObject::get('Unit','Rented = 0');
+		$data = array();
+		foreach ($addys as $d)
+		{
+			//Add total weight and coordinates
+			$lng = substr(strstr($d->GLatLng,','),1);
+			$lat = strstr($d->GLatLng,',',true);
+			$a = array(
+				"id" => $d->ID,
+				"lat" => $lat,
+				"lng" => $lng,
+				"weight" => $d->Bedrooms + 1
+			);
+			array_push($data, $a);
+		}
+		return json_encode($data);
+	}
+	
+	public function listingsSearch($arguments){
+		$loc = str_replace(" ","",$arguments->requestVar('center'));
+		$loc = (strstr($loc, '(')) ? $loc = substr($loc,1,(strlen($loc) - 2)) : $loc;
+		$lng = substr(strstr($loc,','),1);
+		$lat = strstr($loc,',',true);
+		$sqlQuery = new SQLQuery();
+		$sqlQuery->select = array(
+		  '( 3959 * acos( cos( radians('.$lat.') ) * cos( radians( Lat ) ) * cos( radians( Lng ) - radians('.$lng.') ) + sin( radians('.$lat.') ) * sin( radians( Lat ) ) ) ) AS distance',
+		  'Description',
+		  'ZipCode As Zip',
+		  'Title',
+		  'Price',
+		  'Bedrooms',
+		  'Lat',
+		  'Lng',
+		  'ID'
+		);
+		$sqlQuery->from = array("Unit");
+		$r = 3000;
+		$radius = $r / 5280;
+		$sqlQuery->having = array("distance < ".$radius);
+		$sqlQuery->orderby = "distance";
+		$rawSQL = $sqlQuery->sql();
+		$result = $sqlQuery->execute();
+		$hasResults= false;
+		//var_dump($result);
+		$results = new DataObjectSet();
+		$data = array();
+		foreach($result as $row) {
+			//var_dump($row);
+			$beds = ($row['Bedrooms'] == -1) ? 'studio' : $row['Bedrooms'].' bedrooms';
+			$a = array(
+				"title" => $row['Title'],
+				"lat" => $row['Lat'],
+				"lng" => $row['Lng'],
+				"price" => $row['Price'],
+				"id" => $row['ID'],
+				"bedrooms" => $beds,
+				"imgurl" => 'assets/large-default.jpg'
+			);
+			array_push($data, $a);
+		}
+		
+		return json_encode($data);
+	}
+	
 	public function FeaturedListings()
 	{
 		$d = DataObject::get('Unit','Featured = true');

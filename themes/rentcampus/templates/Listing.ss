@@ -7,7 +7,7 @@
 	<meta property="fb:app_id" content="173057479484090" /> 
 	<meta property="og:type"   content="rentcampus:apartment" />
 	<meta property="og:url"    content="$BaseHref/listings/show/$ID" />
-	<meta property="og:title"  content="RentCampus $PropertyType <% if Neighborhood %>on $Neighborhood<% end_if %>" />
+	<meta property="og:title"  content="RentCampus $PropertyType | $Title" />
 	<meta property="og:image"  content="$BaseHref$ListingImages.First.URL" />
 	<meta property="rentcampus:bedrooms"   content="$Bedrooms" /> 
 	<meta property="rentcampus:bathrooms"   content="$Bathrooms" /> 
@@ -72,6 +72,11 @@
 				<div class="column featured">
 
 					<div class="header">
+					<% if Rented = 1 %>
+						<div style="position:absolute;left:0pxtop:0px;left:30%">
+						<img src="assets/rented.png" width="200px" />
+						</div>
+					<% end_if %>
 						<h3 class="title"> $Title </h3>
 						<h3 class="price"><% if Bedrooms = -1 %> Room for Rent <% else if Bedrooms = 0 %> Studio <% else %>$Bedrooms bedroom<% end_if %> 
 						<br /> <span> $$Price </span> <br />
@@ -86,18 +91,12 @@
 
 					<div class="footer">
 						
-						<% if UnitStatus = Active %>
+						<% if Rented = 0 %>
 						<p id="appointmentNotice" class="notice">Call us today at <strong>215.825.3344</strong> to book your appointment.</p>
 						<p class="info">
 						<a id="bookViewing" class="button medium" href="#appointmentNotice" style="margin-top:5px;"> BOOK VIEWING </a>
 						<br />
 						Note: Appointments are scheduled for 30 minutes with 24 hour advance notice.</br>
-						<strong>Monday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Tuesday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Wednesday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Thursday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Friday</strong>: 11:00 am - 5:00 pm<br />
-						<strong>Saturday</strong>: 1:00 pm - 4:00 pm
 						</p>
 						<% else %>
 						<p class="error">THIS UNIT IS NO LONGER AVAILABLE.</p>
@@ -125,14 +124,15 @@
     <div id="right_col">
     
     <div class="page-content">
-		<% if UnitStatus = Active %>
-		<p style="text-align: center;"><a class="button large" href="#"> RENT IT NOW! </a></p>
-		<p style="text-align: center;"><a class="button large" href="apply"> Apply Online </a></p>
+		<% if Rented = 0 %>
+		<p style="text-align: center;"><a class="button large" href="rental-application?pid=$ID"> Apply Online </a></p>
 		<% else %>
 		<p class="error">UNIT HAS BEEN RENTED</p>
 		<% end_if %>
-		<textarea id="shareMessage" style="width:166px;" placeholder="Enter an optional message to post"></textarea><br/>
-		<p style="text-align: center;"><a id="fbShareButton" class="button fb-bg" href="#"> Share on Facebook</a></p>
+		<form action="listings/share/$ID">
+		<textarea id="shareMessage" name="msg" style="width:166px;height:100px;" placeholder="Enter a message (optional)"></textarea><br/>
+		<p style="text-align: center;"><input type="submit" id="fbShareButton" class="button fb-bg" href="" value="Share on Facebook"></input></p>
+		</form>
 		<span class="acc-trigger">
 			<h4><a href="#">Property Details</a></h4>
 		</span>

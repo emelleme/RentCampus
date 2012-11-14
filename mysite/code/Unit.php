@@ -28,6 +28,8 @@ class Unit extends DataObject{
 		"LastMonthRent" => "Decimal",
 		"MinimumRentalTerm" => "Varchar",
 		"GLatLng" => "Varchar(100)",
+		"Lat" => "Float",
+		"Lng" => "Float",
 		"PricingNote" => "Text" //Back-end note about unit price
 	);
 	
@@ -38,7 +40,8 @@ class Unit extends DataObject{
 		'SecurityDeposit' => '0.00',
 		'FirstMonthRent' => '0.00',
 		'LastMonthRent' => '0.00',
-		'UnitStatus' => 'Active'
+		'UnitStatus' => 'Active',
+		'MinimumRentalTerm' => '12 mo.'
 	);
 	
 	function canEdit($member = null){
@@ -51,14 +54,15 @@ class Unit extends DataObject{
 
 	public static $has_one = array(
 		"LeaseDoc" => "File",
-		"GuaranteeofLease" => "File"
+		"GuaranteeofLease" => "File",
 	);
 
 	public static $many_many = array(
 		'ListingImages' => 'Image',
 		'Amenities' => 'Amenity',
 		'Utilities' => 'Utility',
-		'MemberFavorites' => 'Member'
+		'MemberFavorites' => 'Member',
+		"CurrentResidents" => "Member"
 	);
 	
 	static $summary_fields = array(
@@ -66,7 +70,9 @@ class Unit extends DataObject{
 		'Bedrooms' => 'Bedrooms',
 		'Bathrooms' => 'Bathrooms',
 		'UnitStatus' => 'Unit Status',
-		'Amenities.Name' => 'Amenities.Name'
+		'Rented'=>'Rented',
+		'Amenities.Name' => 'Amenities.Name',
+		'ID'=>'ID'
 	);
 	
 	//The class of the page which will list this DataObject
@@ -134,7 +140,9 @@ class Unit extends DataObject{
         }
  		
  		$f->addFieldToTab("Root.ListingImages", new MultipleFileAttachmentField('ListingImages','Listing Images'));
- 		
+ 		if(@$this->ID){
+ 		$f->addFieldToTab('Root.Main', new LiteralField('Link', '<a href="http://rentcampusonline.com/listings/show/'.$this->ID.'/" target="_blank">Link</a>'));
+ 		}
  		$f->addFieldToTab('Root.UnitInfo', new TextField('Bedrooms','Number of Bedrooms (enter "0" for Studio, and "-1" for Room for Rent'));
  		$f->addFieldToTab('Root.UnitInfo', new TextField('Bathrooms','Number of Bathrooms'));
  		$f->addFieldToTab('Root.UnitInfo', new TextField('UnitSize', 'Square Feet (e.g. 650)'));

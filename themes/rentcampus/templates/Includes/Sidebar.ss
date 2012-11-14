@@ -10,10 +10,19 @@
 
 <div class="page-content">
 	<h3>Online Forms</h3>
-    <p><a href="">Application</a></p>
-    <p><a href="">Sample Lease</a></p>
-    <p><a href="">Sample Cosigner Form</a></p>
+    <p><a href="rental-application">Application</a></p>
+    <p><a href="assets/LeasingDocs/RentCampusLease2012-2013.pdf">Sample Lease</a></p>
+    <p><a href="assets/LeasingDocs/co-signeragreement2012-2013.pdf">Sample Cosigner Form</a></p>
 	
+	<br/>
+	
+	
+</div>
+
+<div class="page-content">
+	<h3>Landlords</h3>
+    <p><a href="#">List your Property</a></p>
+	<p><a href="#">Landlord Portal</a></p>
 	<br/>
 	
 	
